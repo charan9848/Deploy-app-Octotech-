@@ -1,0 +1,80 @@
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  color: #ffffffef; /* Changed color to match OCTOTECH color */
+  
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #f50057;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #f50057;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.active:hover::before,
+.active:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.active:hover {
+  color: #ff4081;
+}
+
+.active::before {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #f50057, 0 0 20px #f50057, 0 0 30px #f50057, 0 0 40px #f50057, 0 0 50px #f50057, 0 0 60px #f50057, 0 0 70px #f50057;
+  }
+  to {
+    box-shadow: none;
+  }
+}
+
+/* Media Query for smaller screen sizes (phone view) */
+@media (max-width: 600px) {
+  .nav-link.active {
+    font-weight: bold;
+    color: #000000; 
+    text-decoration:underline;/* Change active color for phone view */
+  }
+
+  .active::before,
+  .active::after {
+    display: none; /* Hide underline effect for phone view */
+  }
+}
+
+.email{
+  position: relative;
+  margin-top: 3px;
+  font-size: smaller;
+  color: dimgray;
+  margin-right: 3px;
+  bottom:12px;
+  left: 420px;
+}
