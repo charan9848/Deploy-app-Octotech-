@@ -147,7 +147,7 @@ function Navbar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily: 'Orbitron, sans-serif', color: '#f50057' }}
           >
-            OCTOTECH
+            Dhanunjai
           </Typography>
         </Toolbar>
       </AppBar>
