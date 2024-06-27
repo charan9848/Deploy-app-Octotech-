@@ -127,6 +127,15 @@ function DashboardNavbar({presentUser}) {
               </MenuItem>
               <MenuItem
                 component={NavLink}
+                to="/alltemplates"
+                onClick={closeMenu}
+                className={location.pathname === "/alltemplates" ? "nav-link active" : "nav-link"}
+                sx={{ color: '#f50057' }}
+              >
+                All Templates
+              </MenuItem>
+              <MenuItem
+                component={NavLink}
                 to="/"
                 onClick={() => {
                   closeMenu();
