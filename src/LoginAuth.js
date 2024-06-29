@@ -11,6 +11,7 @@ function LoginAuth() {
     password: ""
   });
   const [alertMessage, setAlertMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); // New state for success message
 
   const { email, password } = data;
 
@@ -33,7 +34,10 @@ function LoginAuth() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Login Successfully");
-      alert("Login Successfully");
+      setSuccessMessage("Login Successfully"); // Set success message on successful login
+      setTimeout(() => {
+        setSuccessMessage(null); // Clear success message after 3 seconds
+      }, 5000);
       window.location.href = "/Dashboard";
     } catch (err) {
       console.error(err);
@@ -67,9 +71,11 @@ function LoginAuth() {
             <MDBCol col='12'>
               <MDBCard className='bg-light text-dark my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
                 <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
+                {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
                   <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                   <p className="text-dark-50 mb-5">Please enter your login and password!</p>
                   {alertMessage && <p className="text-danger mb-3 pb-lg-2">{alertMessage}</p>}
+                  
                   <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-dark' label='Email address' name='email' value={email} type='email' size="lg" onChange={changeHandler} />
                   <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-dark' label='Password' name='password' value={password} type='password' size="lg" onChange={changeHandler} />
                   <MDBBtn outline className='mx-2 px-5' color='black' size='lg' type='Submit'>

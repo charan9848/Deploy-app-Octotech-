@@ -3,7 +3,6 @@ import UserAuth from './UserAuth';
 import LoginAuth from './LoginAuth';
 import Navbar from './Navbar';
 import Home from './Home';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import { auth } from './firebase';

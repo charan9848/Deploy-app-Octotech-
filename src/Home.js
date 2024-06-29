@@ -1,7 +1,8 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import image1 from './images/Home-image.jpg'
 import { Typography, Box, Container, Grid } from '@mui/material';
-import backgroundVideo from './images/back2.mp4'; // Update the path to your video
+import backgroundVideo from './images/back2.mp4';
 import './Home.css';
 import octotechlogo from './images/octotechlogo-modified.png';
 
@@ -138,7 +139,7 @@ const Home = () => {
             <Grid item xs={12} md={6}>
               <Box display="flex" flexDirection="column" justifyContent="center" height="100%">
                 <Typography variant="h4" gutterBottom textAlign="center">
-                  Welcome to <span style={{ color: "#ff4081", fontFamily: "'Bebas Neue', sans-serif" }}>Octotech</span> Video Editing and VFX Agency!
+                  Welcome to <span style={{ color: "#ff4081", fontFamily: " sans-serif" }}>Octotech</span> Video Editing and VFX Agency!
                 </Typography>
                 <Typography variant="body1" textAlign="center" style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: "400", fontStyle: "normal", fontSize: "10px" }}>
                   At Octotech, we bring your vision to life with our expertise in video editing and visual effects. We create high-quality content that captivates and engages, perfect for social media ads, YouTube videos, Instagram reels, commercial promotions, and more.
@@ -158,8 +159,7 @@ const Home = () => {
             maxWidth: { xs: '100%', md: '1600px' },
             margin: '0 auto',
             padding: { xs: 2, sm: 3, md: 4 },
-          }}
-        >
+          }}>
           <Typography variant="h4" gutterBottom textAlign="center" color="black">
             Best Works
           </Typography><br />
@@ -209,6 +209,145 @@ const Home = () => {
             ))}
           </Grid>
         </Container>
+      </div>
+
+      <div class="container-fluid p-5 bg-secondary text-white text-center">
+        <h1 id="Mphasis">Welcome To Octotech</h1>
+        <p>Resize this responsive page to see the effect!</p>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-sm-4">
+            <h3>Column 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+          </div>
+          <div class="col-sm-4">
+            <h3>Column 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+          </div>
+          <div class="col-sm-4">
+            <h3>Column 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-3" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Firoz</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="./login" class="btn btn-primary">See Profile</a>
+          </div>
+        </div>
+
+
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Charan</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="./login" class="btn btn-primary">See Profile</a>
+          </div>
+        </div>
+
+
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Darshan</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="./login" class="btn btn-primary">See Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row g-0 bg-body-light position-relative">
+          <div class="col-md-6 mb-md-0 p-md-4">
+            <img src={image1} class="w-100" alt="..." style={{ borderRadius: '20px' }} />
+          </div>
+          <div class="col-md-6 p-5 ps-md-5">
+            <h5 class="mt-3">Columns with stretched link</h5>
+            <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
+            <a href="./login" class="btn btn-success">Go SomeWhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card text-center">
+        <div class="card-header ">
+          New Offer
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Professional Reels/Shorts Editing</h5>
+          <p class="card-text">Elevate your reels with our unbeatable edting packages</p> 
+        </div>
+      </div>
+
+      <div class="container mt-5" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', textAlign: 'center' }}>
+        <div class="price-container">
+          <div class="card img-fluid" style={{ width: '350px' }}>
+            <div class="card-body">
+              <h1 class="card-title bg-secondary">Basic</h1>
+              <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}> 
+                <li >Basic Cutting</li>
+                <li >Basic Transitions</li>
+                <li >Audio Adjustment</li>
+                <li >Colour Correction</li>
+              </ul>
+              <br></br>
+              <a href="./login" class="btn btn-primary" >See Profile</a>
+            </div>
+            <h1>699/-</h1>
+          </div>
+        </div>
+
+        <div class="price-container">
+          <div class="card img-fluid" style={{ width: '350px' }}>
+            <div class="card-body">
+              <h1 class="card-title bg-primary">Standard</h1>
+              <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}> 
+                <li >Colour Correction</li>
+                <li >Colour Grading</li>
+                <li >Motion Graphics</li>
+                <li >Pro Transitions</li>
+                <li >Subtitles</li>
+                <li >Audio Enchancement</li>
+                <li >Sound Effects</li>
+              </ul><br></br>
+              <a href="./login" class="btn btn-primary">See Profile</a>
+            </div>
+            <h1>999/-</h1>
+          </div>
+        </div>
+
+        <div class="price-container">
+          <div class="card img-fluid" style={{ width: '350px' }}>
+            <div class="card-body">
+              <h1 class="card-title bg-warning">Premium</h1>
+              <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}> 
+                <li >Visual Effects</li>
+                <li >Text Animation</li>
+                <li >Colour Correction</li>
+                <li >Colour Grading</li>
+                <li >Motion Graphics</li>
+                <li >Pro Transitions</li>
+                <li >Subtitles</li>
+                <li >Audio Enchancement</li>
+                <li >Sound Effects</li>
+              </ul><br></br>
+              <a href="./login" class="btn btn-primary">See Profile</a>
+            </div>
+            <h1>1499/-</h1>
+          </div>
+        </div>
       </div>
     </>
   );
