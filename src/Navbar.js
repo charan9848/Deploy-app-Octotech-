@@ -1,8 +1,8 @@
 import { AppBar, Button, IconButton, Toolbar, Typography, Box, Menu, MenuItem } from '@mui/material';
-import MouseIcon from '@mui/icons-material/Mouse';
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import octotechlogo from './images/octotechlogo-modified.png'
 import './Navbar.css';
 
 function Navbar() {
@@ -32,7 +32,12 @@ function Navbar() {
             aria-label="logo"
             sx={{ display: { xs: 'none', md: 'flex' }, color: '#f50057' }}
           >
-            <MouseIcon />
+            <Box
+              component="img"
+              src={octotechlogo}
+              alt="Octotech Logo"
+              sx={{ height: 30, width: 30 }} // Adjust size as needed
+            />
           </IconButton>
           <Typography
             variant="h6"
@@ -140,7 +145,12 @@ function Navbar() {
             aria-label="logo"
             sx={{ display: { xs: 'flex', md: 'none' }, color: '#f50057' }}
           >
-            <MouseIcon />
+            <Box
+              component="img"
+              src={octotechlogo}
+              alt="Octotech Logo"
+              sx={{ height: 30, width: 30 }} // Adjust size as needed
+            />
           </IconButton>
           <Typography
             variant="h6"

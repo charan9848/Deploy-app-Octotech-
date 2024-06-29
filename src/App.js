@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import { auth } from './firebase';
 import DashboardNavbar from './DashboardNavBar';
 import AllTemplates from './AllTemplates';
+import Loader from './Loader'; // Import the Loader component
 
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
@@ -31,8 +32,8 @@ const App = () => {
 
   if (loading) {
     return (
-      <div>
-        <center>Loading...</center>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Loader />
       </div>
     );
   }
@@ -47,11 +48,11 @@ const App = () => {
           <Route path="/login" element={<LoginAuth />} />
           <Route
             path="/dashboard"
-            element={presentUser ? <Dashboard  /> : <Navigate to="/login" />}
+            element={presentUser ? <Dashboard /> : <Navigate to="/login" />}
           />
           <Route
             path="/Alltemplates"
-            element={presentUser ? <AllTemplates  /> : <Navigate to="/login" />}
+            element={presentUser ? <AllTemplates /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>
