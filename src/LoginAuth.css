@@ -13,3 +13,18 @@
 
   }
   
+  /* LoginAuth.css */
+
+input {
+  background-color: #f0f0f0; /* Light gray background */
+  color: #fff; /* Text color (white) */
+  border: 1px solid #ccc; /* Border color */
+  padding: 10px; /* Padding inside the input */
+  border-radius: 5px; /* Rounded corners */
+}
+
+input:focus {
+  background-color: #fff; /* White background on focus */
+  border-color: #007bff; /* Border color on focus */
+  outline: none; /* Remove default outline */
+}
