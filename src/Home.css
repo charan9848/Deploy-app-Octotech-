@@ -69,3 +69,8 @@
 .landing{
     background-color: black;
 }
+
+
+.price-container:hover{
+    transform: scale(1.00000000000000001) translateY(-14px);
+}
