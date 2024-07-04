@@ -220,7 +220,7 @@ const Home = () => {
       <div class="container mt-5" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' , gap:'30px'}}>
        <div class="Templates">
         <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fin.pinterest.com%2Fpin%2Fboy-birthday-video-invitation-template--657525614344954012%2F&psig=AOvVaw3ALG06ZlnkOXTo7wJW1zuB&ust=1720198844870000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDempbujYcDFQAAAAAdAAAAABAE' alt="Card image" style={{ width: '100%' }}></img>
+          <img class="card-img-top" src='https://seemymarriage.com/wp-content/uploads/2023/02/Theme-Krishna-1st-Birthday-Invitation-Video-Peacock-feathers-445x250.png' alt="Card image" style={{ width: '100%' }}></img>
           <div class="card-body">
             <h4 class="card-title">Birthday Invitation Video Templates</h4>
             <p class="card-text">Here are some birthday templates available for you to choose from. Click on the button below to explore and select your preferred template:</p>
