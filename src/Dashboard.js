@@ -24,7 +24,7 @@ const Dashboard = () => {
       <div class="container mt-3" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' , gap:'30px'}}>
        <div class="Templates">
         <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src='https://pixabay.com/get/g807d02b314bce39fe102d47f88e11f1c935d15553e7e9a687b9002cab0a0467ee277c2021385ea437ceb1de07cc8c3210ddf3e768c5461fd7c961ca3fa61052c_1920.jpg' alt="Card image" style={{ width: '100%' }}></img>
+          <img class="card-img-top" src='https://seemymarriage.com/wp-content/uploads/2023/02/Theme-Krishna-1st-Birthday-Invitation-Video-Peacock-feathers-445x250.png' alt="Card image" style={{ width: '100%' }}></img>
           <div class="card-body">
             <h4 class="card-title">Birthday Invitation Video Templates</h4>
             <p class="card-text">Here are some birthday templates available for you to choose from. Click on the button below to explore and select your preferred template:</p>
