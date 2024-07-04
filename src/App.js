@@ -9,6 +9,7 @@ import { auth } from './firebase';
 import DashboardNavbar from './DashboardNavBar';
 import AllTemplates from './AllTemplates';
 import Loader from './Loader'; // Import the Loader component
+import Apply from './Apply';
 
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
@@ -52,6 +53,10 @@ const App = () => {
           <Route
             path="/Alltemplates"
             element={presentUser ? <AllTemplates /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/Apply"
+            element={presentUser ? <Apply /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>

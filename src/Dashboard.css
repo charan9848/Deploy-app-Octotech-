@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.price-container{
+    transition: transform .4s; 
+}
+
+.price-container:hover{
+    transform:scale(1.09);
+
+}
+
+.Templates{
+    transition: transform .4s; 
+}
+
+.Templates:hover{
+    transform:scale(1.09);
+
+}
+
+/* Background image css */
+.hero{
+    display: flex;
+    height: 100vh;
+    /* background-color: black; */
+    /* background-image: url('/src/Images/Home-image.jpg'); */
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+    
+ 
+
+    /* Standard syntax */
+    mask-image: linear-gradient(to bottom, #000 calc(70% - 20px), rgba(0, 0, 0, 0));
+   
+}
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    color: white;
+}
+
+.content h1{
+    font-size: 56px;
+    font-weight: bolder;
+}
+
+.content p{
+    font-size: 22px;
+    margin: 15px 0;
+    max-width: 550px;
+    letter-spacing: 2px;
+}
+
+.content a{
+    color: inherit;
+    text-decoration: none;
+    background-color: purple;
+    padding: 12px 24px;
+    font-size: 22px;
+    border-radius: 10px;
+}
+
+/* background image ended */
+
+

@@ -211,71 +211,56 @@ const Home = () => {
         </Container>
       </div>
 
-      <div class="container-fluid p-5 bg-secondary text-white text-center">
+      <div class="container-fluid p-5 bg-primary text-white text-center">
         <h1 id="Mphasis">Welcome To Octotech</h1>
-        <p>Resize this responsive page to see the effect!</p>
+        <p>Here Some Templates are Available.</p>
       </div>
 
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+     
+      <div class="container mt-5" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' , gap:'30px'}}>
+       <div class="Templates">
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src='https://pixabay.com/get/g807d02b314bce39fe102d47f88e11f1c935d15553e7e9a687b9002cab0a0467ee277c2021385ea437ceb1de07cc8c3210ddf3e768c5461fd7c961ca3fa61052c_1920.jpg' alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Birthday Invitation Video Templates</h4>
+            <p class="card-text">Here are some birthday templates available for you to choose from. Click on the button below to explore and select your preferred template:</p>
+            <a href="#" class="btn btn-primary">See Profile</a>
           </div>
-          <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+        </div>
+
+        <div class="Templates">
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src='https://resource.flexclip.com/templates/cover/w400/indian-wedding-invitation.webp?v=1' alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Wedding Invitations Video Templates</h4>
+            <p class="card-text">Explore our collection of wedding templates designed to capture the love and romance of your special day. Click below to choose your perfect wedding template:</p>
+            <a href="#Mphasis" class="btn btn-primary">See Profile</a>
           </div>
-          <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+        </div>
+
+        <div class="Templates">
+        <div class="card img-fluid" style={{ width: '350px' }}>
+          <img class="card-img-top" src='https://pixabay.com/get/g49599b187c3b4362dbc6fd6f7385a0d10182702f3d525138505ffb11442b6551b38e520efe8010b1a53f41945ce97f85df222c19ce77214872222c7f58f0bb4c_1280.jpg' alt="Card image" style={{ width: '100%' }}></img>
+          <div class="card-body">
+            <h4 class="card-title">Engagement Invitation Templates</h4>
+            <p class="card-text">Capture the excitement and romance of your engagement with our selection of templates. Click below to browse and select your ideal engagement template:</p>
+            <a href="#" class="btn btn-primary">See Profile</a>
           </div>
+        </div>
         </div>
       </div>
 
-      <div class="container mt-3" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap:'30px' }}>
-
-        <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
-          <div class="card-body">
-            <h4 class="card-title">Firoz</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="./login" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-
-
-        <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
-          <div class="card-body">
-            <h4 class="card-title">Charan</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="./login" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-
-
-        <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src={image1} alt="Card image" style={{ width: '100%' }}></img>
-          <div class="card-body">
-            <h4 class="card-title">Darshan</h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="./login" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-      </div>
 
       <div class="container mt-5">
         <div class="row g-0 bg-body-light position-relative">
           <div class="col-md-6 mb-md-0 p-md-4">
-            <img src={image1} class="w-100" alt="..." style={{ borderRadius: '20px' }} />
+            <img src='https://www.videoconverterfactory.com/tips/imgs-self/best-vfx-software/best-vfx-software-1.jpg' class="w-100" alt="..." style={{ borderRadius: '20px' }} />
           </div>
           <div class="col-md-6 p-5 ps-md-5">
-            <h5 class="mt-3">Columns with stretched link</h5>
-            <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
+            <h5 class="mt-3">Short Film Editing Available</h5>
+            <p>Transform your vision into captivating narratives with our professional editing. From narrative shorts to promotional videos, we specialize in creative transitions and impactful visual effects. Contact us today to enhance your storytelling journey.</p>
             <a href="./login" class="btn btn-success">Go SomeWhere</a>
           </div>
         </div>
@@ -349,6 +334,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      
       {/* footer */}
       <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

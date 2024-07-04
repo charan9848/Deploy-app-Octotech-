@@ -15,6 +15,12 @@ function LoginAuth() {
 
   const { email, password } = data;
 
+  const validateEmail = (email) => {
+    // Regular expression for email validation
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -23,6 +29,10 @@ function LoginAuth() {
     e.preventDefault();
     if (!email || !password) {
       setAlertMessage("Email and password are required");
+      return;
+    }
+    if (!validateEmail(email)) {
+      setAlertMessage("Email is not valid");
       return;
     }
 

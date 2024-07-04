@@ -71,6 +71,11 @@
 }
 
 
+.price-container{
+    transition: transform .4s; 
+}
+
 .price-container:hover{
-    transform: scale(1.00000000000000001) translateY(-14px);
+    transform:scale(1.09);
+
 }
