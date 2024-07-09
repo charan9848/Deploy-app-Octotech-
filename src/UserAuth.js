@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './UserAuth.css';
 import { auth, db } from './firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setDoc, doc } from 'firebase/firestore';
 
 import {
@@ -17,7 +17,7 @@ import {
 import { Alert } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 
-function UserAuth() {
+function UserAuth({ setJustSignedUp }) {
   const [data, setData] = useState({
     first: "",
     last: "",
@@ -27,6 +27,7 @@ function UserAuth() {
 
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const { first, last, email, password } = data;
 
@@ -79,6 +80,9 @@ function UserAuth() {
         email: "",
         password: ""
       });
+      // Set justSignedUp to true and navigate to login page
+      setJustSignedUp(true);
+      navigate('/login');
 
     } catch (err) {
       console.log(err);

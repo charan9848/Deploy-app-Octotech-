@@ -1,17 +1,26 @@
 import { AppBar, Button, IconButton, Toolbar, Typography, Box, Menu, MenuItem } from '@mui/material';
-import octotechlogo from './images/octotechlogo-modified.png'
-import MouseIcon from '@mui/icons-material/Mouse';
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
+import octotechlogo from './images/octotechlogo-modified.png';
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { auth } from './firebase';
 import './Navbar.css';
 
-
-function DashboardNavbar({presentUser}) {
-  
+function DashboardNavbar({ presentUser }) {
+  const settings = [`${presentUser.firstname} ${presentUser.lastname}`, presentUser.email];
   const [anchorNav, setAnchorNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const location = useLocation();
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const openMenu = (e) => {
     setAnchorNav(e.currentTarget);
@@ -20,18 +29,16 @@ function DashboardNavbar({presentUser}) {
   const closeMenu = () => {
     setAnchorNav(null);
   };
-  
 
-    const handleSignOut = async () => {
-      try {
-        await auth.signOut();
-        console.log('Sign out successful');
-        alert("Logout Successfully")
-      } catch (error) {
-        console.error('Error signing out: ', error);
-      }
-    };
-  
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      console.log('Sign out successful');
+      alert('Logout Successfully');
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+  };
 
   return (
     <div>
@@ -58,9 +65,7 @@ function DashboardNavbar({presentUser}) {
           >
             OCTOTECH
           </Typography>
-          
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <div className='email'><center>{presentUser.email}</center></div>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <Button
               component={NavLink}
               to="/dashboard"
@@ -79,26 +84,98 @@ function DashboardNavbar({presentUser}) {
             </Button>
             <Button
               component={NavLink}
-              to="/Apply"
-              className={location.pathname === "/Apply" ? "nav-link active" : "nav-link"}
+              to="/apply"
+              className={location.pathname === "/apply" ? "nav-link active" : "nav-link"}
               sx={{ color: '#f50057' }}
             >
               Apply
             </Button>
-            <Button  
+
+
+
+            <Button
               component={NavLink}
               to="/"
               className={location.pathname === "/" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }} 
-              onClick={handleSignOut}>
-                
+              sx={{ color: '#f50057' }}
+              onClick={handleSignOut}
+            >
               Logout
             </Button>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar>
+                    {presentUser.firstname ? presentUser.firstname.charAt(0).toUpperCase() : 'U'}
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, justifyContent: 'space-between', alignItems: 'center' }}>
             <IconButton size="large" edge="start" color="inherit" onClick={openMenu}>
               <MenuIcon />
             </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ fontFamily: 'Orbitron, sans-serif', color: '#f50057' }}
+            >
+              DASHBOARD
+            </Typography>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar>
+                  {presentUser.firstname ? presentUser.firstname.charAt(0).toUpperCase() : 'U'}
+                </Avatar>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
             <Menu
               anchorEl={anchorNav}
               open={Boolean(anchorNav)}
@@ -124,9 +201,9 @@ function DashboardNavbar({presentUser}) {
               </MenuItem>
               <MenuItem
                 component={NavLink}
-                to="/Apply"
+                to="/apply"
                 onClick={closeMenu}
-                className={location.pathname === "/Apply" ? "nav-link active" : "nav-link"}
+                className={location.pathname === "/apply" ? "nav-link active" : "nav-link"}
                 sx={{ color: '#f50057' }}
               >
                 Apply
@@ -149,33 +226,11 @@ function DashboardNavbar({presentUser}) {
                 }}
                 className={location.pathname === "/" ? "nav-link active" : "nav-link"}
                 sx={{ color: '#f50057' }}
-                
               >
                 Logout
               </MenuItem>
             </Menu>
           </Box>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="logo"
-            sx={{ display: { xs: 'flex', md: 'none' }, color: '#f50057' }}
-          >
-            <Box
-              component="img"
-              src={octotechlogo}
-              alt="Octotech Logo"
-              sx={{ height: 30, width: 30 }} // Adjust size as needed
-            />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily: 'Orbitron, sans-serif', color: '#f50057' }}
-          >
-            DASHBOARD
-          </Typography>
         </Toolbar>
       </AppBar>
     </div>

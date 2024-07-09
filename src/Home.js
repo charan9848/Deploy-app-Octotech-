@@ -242,7 +242,7 @@ const Home = () => {
 
         <div class="Templates">
         <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src='https://pixabay.com/get/g49599b187c3b4362dbc6fd6f7385a0d10182702f3d525138505ffb11442b6551b38e520efe8010b1a53f41945ce97f85df222c19ce77214872222c7f58f0bb4c_1280.jpg' alt="Card image" style={{ width: '100%' }}></img>
+          <img class="card-img-top" src='https://panel.craftyartapp.com/templates/uploadedFiles/thumb_file/6ac579326764518f0e0352d75063a5d433f7c0a21696071512.jpg' alt="Card image" style={{ width: '100%' }}></img>
           <div class="card-body">
             <h4 class="card-title">Engagement Invitation Templates</h4>
             <p class="card-text">Capture the excitement and romance of your engagement with our selection of templates. Click below to browse and select your ideal engagement template:</p>

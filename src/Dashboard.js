@@ -11,8 +11,8 @@ const Dashboard = () => {
       <section className="hero" style={{ backgroundImage: `url(${background})` }}>
         <div className="content">
           <h1>Welcome To Octotech.</h1>
-          <p>Get Ready to transform your React application into visual stunning experience.</p>
-          <a href="#">Start now</a>
+          <p>Get Resources from octotech team, We are going to help you.</p>
+          <a href="./Apply">Apply here</a>
         </div>
       </section>
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
         <div class="Templates">
         <div class="card img-fluid" style={{ width: '350px' }}>
-          <img class="card-img-top" src='https://pixabay.com/get/g49599b187c3b4362dbc6fd6f7385a0d10182702f3d525138505ffb11442b6551b38e520efe8010b1a53f41945ce97f85df222c19ce77214872222c7f58f0bb4c_1280.jpg' alt="Card image" style={{ width: '100%' }}></img>
+          <img class="card-img-top" src='https://panel.craftyartapp.com/templates/uploadedFiles/thumb_file/6ac579326764518f0e0352d75063a5d433f7c0a21696071512.jpg' alt="Card image" style={{ width: '100%' }}></img>
           <div class="card-body">
             <h4 class="card-title">Engagement Invitation Templates</h4>
             <p class="card-text">Capture the excitement and romance of your engagement with our selection of templates. Click below to browse and select your ideal engagement template:</p>
@@ -59,12 +59,12 @@ const Dashboard = () => {
       <div class="container mt-5">
         <div class="row g-0 bg-body-light position-relative">
           <div class="col-md-6 mb-md-0 p-md-4">
-            <img src={image1} class="w-100" alt="..." style={{ borderRadius: '20px' }} />
+            <img src='https://www.videoconverterfactory.com/tips/imgs-self/best-vfx-software/best-vfx-software-1.jpg' class="w-100" alt="..." style={{ borderRadius: '20px' }} />
           </div>
           <div class="col-md-6 p-5 ps-md-5">
-            <h5 class="mt-3"></h5>
-            <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
-            <a href="#" class="btn btn-success">Go SomeWhere</a>
+            <h5 class="mt-3">Short Film Editing Available</h5>
+            <p>Transform your vision into captivating narratives with our professional editing. From narrative shorts to promotional videos, we specialize in creative transitions and impactful visual effects. Contact us today to enhance your storytelling journey.</p>
+            <a href="./login" class="btn btn-success">Go SomeWhere</a>
           </div>
         </div>
       </div>
