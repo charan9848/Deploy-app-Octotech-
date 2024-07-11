@@ -11,6 +11,10 @@ import AllTemplates from './AllTemplates';
 import Loader from './Loader'; // Import the Loader component
 import Apply from './Apply';
 import { getDoc, doc } from 'firebase/firestore';
+import Admin from './Admin';
+import Addtemplate from './Addtemplate';
+import Viewtemplates from './Viewtemplates';
+import AdminDashboard from './AdminDashboard';
 
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
@@ -54,6 +58,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<UserAuth setJustSignedUp={setJustSignedUp} />} />
           <Route path="/login" element={<LoginAuth />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/addtemplate" element={<Addtemplate />} />
+          <Route path="/viewtemplates" element={<Viewtemplates />} />
+          
+          
+         
+
           <Route
             path="/dashboard"
             element={presentUser ? <Dashboard /> : <Navigate to="/login" />}

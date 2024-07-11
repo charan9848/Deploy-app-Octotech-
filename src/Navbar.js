@@ -66,6 +66,14 @@ function Navbar() {
             </Button>
             <Button
               component={NavLink}
+              to="/admin"
+              className={location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+              sx={{ color: '#f50057' }}
+            >
+              Admin
+            </Button>
+            <Button
+              component={NavLink}
               to="/login"
               className={location.pathname === "/login" ? "nav-link active" : "nav-link"}
               sx={{ color: '#f50057' }}
