@@ -126,6 +126,7 @@ function Navbar() {
               >
                 About
               </MenuItem>
+             
               <MenuItem
                 component={NavLink}
                 to="/signup"

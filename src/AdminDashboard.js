@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, } from '@chakra-ui/react'
+
 
 const AdminDashboard = () => {
   return (
@@ -14,6 +14,11 @@ const AdminDashboard = () => {
           <br />
           <button type="button" className="btn btn-primary" onClick={() => window.location.href = '/addtemplate'}>
             Add Template
+          </button>
+          <br />
+          <br />
+          <button type="button" className="btn btn-primary" onClick={() => window.location.href = '/Customerapplications'}>
+            Customers
           </button>
         </center>
       </div>
