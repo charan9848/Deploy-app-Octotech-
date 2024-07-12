@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "@chakra-ui/react"
+import "@chakra-ui/react";
+import { AuthProvider } from './AuthProvider'; // Import AuthProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider> {/* Wrap the App component with AuthProvider */}
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
 

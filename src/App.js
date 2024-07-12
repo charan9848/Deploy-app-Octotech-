@@ -15,7 +15,9 @@ import Admin from './Admin';
 import Addtemplate from './Addtemplate';
 import Viewtemplates from './Viewtemplates';
 import AdminDashboard from './AdminDashboard';
-import Customerapplications from './Customerapplications'
+import Customerapplications from './Customerapplications';
+import PrivateRoute from './PrivateRoute';
+
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -59,14 +61,21 @@ const App = () => {
           <Route path="/signup" element={<UserAuth setJustSignedUp={setJustSignedUp} />} />
           <Route path="/login" element={<LoginAuth />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admindashboard" element={<AdminDashboard />} />
-          <Route path="/Customerapplications" element={<Customerapplications />} />
-          <Route path="/addtemplate" element={<Addtemplate />} />
-          <Route path="/viewtemplates" element={<Viewtemplates />} />
           
+          {/* Admin Dashboard Route */}
+          <Route
+            path="/admindashboard"
+            element={
+              <PrivateRoute>
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          >
+            <Route path="customerapplications" element={<Customerapplications />} />
+            <Route path="addtemplate" element={<Addtemplate />} />
+            <Route path="viewtemplates" element={<Viewtemplates />} />
+          </Route>
           
-         
-
           <Route
             path="/dashboard"
             element={presentUser ? <Dashboard /> : <Navigate to="/login" />}

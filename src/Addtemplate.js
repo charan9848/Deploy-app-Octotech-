@@ -75,7 +75,7 @@ const Addtemplate = () => {
     };
 
     return (
-        <div className="container mt-3 col-sm-6"> 
+        <div className="container mt-3 mb-5 col-sm-6"> 
        
             <h2>Add Template here</h2>
             <form onSubmit={AddTemplate}>
@@ -120,6 +120,7 @@ const Addtemplate = () => {
             View Templates
           </button>
             </form>
+            
         </div>
     );
 };

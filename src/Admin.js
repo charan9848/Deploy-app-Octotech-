@@ -73,7 +73,6 @@ const Admin = () => {
         {error && <div className="alert alert-danger mb-3">{error}</div>}
         {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>}
         <button type="submit" className="btn btn-default">Submit</button>
-        
       </form>
     </div>
   );
