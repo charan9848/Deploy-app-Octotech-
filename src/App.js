@@ -18,6 +18,7 @@ import AdminDashboard from './AdminDashboard';
 import Customerapplications from './Customerapplications';
 import PrivateRoute from './PrivateRoute';
 
+
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<UserAuth setJustSignedUp={setJustSignedUp} />} />
           <Route path="/login" element={<LoginAuth />} />
+       
           <Route path="/admin" element={<Admin />} />
           
           {/* Admin Dashboard Route */}
