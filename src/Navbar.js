@@ -56,14 +56,7 @@ function Navbar() {
             >
               Home
             </Button>
-            <Button
-              component={NavLink}
-              to="/about"
-              className={location.pathname === "/about" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }}
-            >
-              About
-            </Button>
+           
             <Button
               component={NavLink}
               to="/admin"
@@ -117,15 +110,7 @@ function Navbar() {
               >
                 Home
               </MenuItem>
-              <MenuItem
-                component={NavLink}
-                to="/about"
-                onClick={closeMenu}
-                className={location.pathname === "/about" ? "nav-link active" : "nav-link"}
-                sx={{ color: '#f50057' }}
-              >
-                About
-              </MenuItem>
+             
              
               <MenuItem
                 component={NavLink}
