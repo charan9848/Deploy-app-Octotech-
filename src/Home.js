@@ -10,6 +10,29 @@ import backgroundVideo from './images/back2.mp4';
 import './Home.css';
 import octotechlogo from './images/octotechlogo-modified.png';
 
+import img1 from './images/img1.JPG';
+import img2 from './images/img2.JPG';
+import img3 from './images/img3.JPG';
+import img4 from './images/img4.JPG';
+import img5 from './images/img5.JPG';
+import img6 from './images/img6.JPG';
+import img7 from './images/img7.JPG';
+import img8 from './images/img8.JPG';
+import img9 from './images/img9.JPG';
+
+const images = [
+  { src: img1, alt: "First slide", header: "Element 3D", paragraph: "Using After Effects , 3D Camera Tracking " },
+  { src: img2, alt: "Second slide", header: "Motion Tracking", paragraph: "Element 3D is a powerful plugin for After Effects developed by Video Copilot." },
+  { src: img3, alt: "Third slide", header: "Element 3d", paragraph: "Track motion in 2D or 3D space,Stabilize shaky footage ,Attach elements to moving objects." },
+  { src: img4, alt: "Fourth slide", header: "Particles", paragraph: "Particle systems like CC Particle World, Particular (from Red Giant)." },
+  { src: img5, alt: "Fifth slide", header: "Fire Particles", paragraph: "Use the Particle System II or CC Particle World effects to create fire." },
+  { src: img6, alt: "Sixth slide", header: "Fire and Smoke", paragraph: "Adjust particle parameters to simulate realistic fire behavior." },
+  { src: img7, alt: "Seventh slide", header: "Element 3d + Fire paticles + Colour Correction", paragraph: " Create fire particles using a particle system and place them at strategic points in your scene." },
+  { src: img8, alt: "Eighth slide", header: "Masking", paragraph: "Customizable parameters (size, birth rate, velocity)." },
+  { src: img9, alt: "Ninth slide", header: "Colour Correction", paragraph: "Apply basic corrections first (exposure, white balance), Use curves and color wheels for more advanced adjustments." }
+];
+
+
 const videoUrls = [
   {
     url: 'https://www.youtube.com/embed/U_aM5C83f3c',
@@ -70,51 +93,20 @@ const Home = () => {
   return (
     <>
       <Carousel>
-        <Carousel.Item interval={1000}>
-          <img
-            className="d-block w-100"
-            src="https://images.pexels.com/photos/333850/pexels-photo-333850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>This is the first slide!</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={500}>
-          <img
-            className="d-block w-100"
-            src="https://images.pexels.com/photos/1480688/pexels-photo-1480688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.pexels.com/photos/1480687/pexels-photo-1480687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.pexels.com/photos/1480689/pexels-photo-1480689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-            alt="Fourth slide"
-          />
-          <Carousel.Caption>
-            <h3>Fourth slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+    {images.map((image, index) => (
+      <Carousel.Item key={index} interval={1000}>
+        <img
+          className="d-block w-100"
+          src={image.src}
+          alt={image.alt}
+        />
+        <Carousel.Caption>
+          <h3>{image.header}</h3>
+          <p>{image.paragraph}</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    ))}
+  </Carousel>
 
       <div>
         <Container
@@ -178,9 +170,16 @@ const Home = () => {
                 <Typography variant="h4" gutterBottom textAlign="center">
                   Welcome to <span style={{ color: "#ff4081", fontFamily: " sans-serif" }}>Octotech</span> Video Editing and VFX Agency!
                 </Typography>
-                <Typography variant="body1" textAlign="center" style={{ fontFamily: "'Cinzel Decorative', serif", fontWeight: "400", fontStyle: "normal", fontSize: "10px" }}>
-                  At Octotech, we bring your vision to life with our expertise in video editing and visual effects. We create high-quality content that captivates and engages, perfect for social media ads, YouTube videos, Instagram reels, commercial promotions, and more.
-                </Typography>
+                <Typography 
+  variant="body1" 
+  textAlign="center" 
+  style={{ fontStyle: "italic", fontSize: "10px" }}
+>
+  At Octotech, we bring your vision to life with our expertise in video editing and visual effects. 
+  We create high-quality content that captivates and engages, perfect for social media ads, 
+  YouTube videos, Instagram reels, commercial promotions, and more.
+</Typography>
+
               </Box>
             </Grid>
           </Grid>
