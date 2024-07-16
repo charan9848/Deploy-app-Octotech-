@@ -71,7 +71,7 @@ function UserAuth({ setJustSignedUp }) {
           lastname: last
         });
       }
-      console.log("Account created");
+      console.log("Account created, Now you can login your account 😀");
       setShowSuccessAlert(true);
       setError(null);
       setData({
@@ -82,7 +82,7 @@ function UserAuth({ setJustSignedUp }) {
       });
       // Set justSignedUp to true and navigate to login page
       setJustSignedUp(true);
-      navigate('/login');
+    
 
     } catch (err) {
       console.log(err);
@@ -116,7 +116,7 @@ function UserAuth({ setJustSignedUp }) {
                 <MDBCardBody className='p-5'>
                   {showSuccessAlert && (
                     <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-                      Account Created Successfully!
+                      Account Created Successfully!, Now you can login your account 😀
                     </Alert>
                   )}
                   {error && (

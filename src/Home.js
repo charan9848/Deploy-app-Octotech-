@@ -64,7 +64,7 @@ const profiles = [
       video editing using Premiere Pro and After Effects. I specialize
       in crafting high-quality content for social media ads, YouTube
       videos, Instagram reels, commercial business promotions, and more.`,
-    contact: "+91 96529 83774",
+    // contact: "+91 96529 83774",
     experience: "3 Years Experience",
   },
   {
@@ -73,7 +73,7 @@ const profiles = [
     description: `An experienced graphic designer with a passion for creating
       visually stunning designs. My expertise lies in using Adobe Photoshop
       and Illustrator to bring ideas to life.`,
-    contact: "+91 88865 29625",
+    // contact: "+91 88865 29625",
     experience: "4 Years Experience",
   },
 ];
@@ -84,7 +84,7 @@ const raviProfile = {
   description: `A dedicated software developer with a focus on front-end development
     using React.js and Material-UI. I enjoy building responsive and dynamic
     user interfaces.`,
-  contact: "+91 9848728321",
+  // contact: "+91 9848728321",
   experience: "1 Years Experience",
 };
 
@@ -433,13 +433,13 @@ const Home = () => {
                     >
                       - {profile.experience}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="body1"
                       gutterBottom
                       sx={{ fontStyle: "italic", fontSize: "0.65rem" }}
                     >
                       Contact - {profile.contact}
-                    </Typography>
+                    </Typography> */}
                   </Box>
                 </Grid>
               ))}
@@ -477,13 +477,13 @@ const Home = () => {
                   >
                     - {raviProfile.experience}
                   </Typography>
-                  <Typography
+                  {/* <Typography
                     variant="body1"
                     gutterBottom
                     sx={{ fontStyle: "italic", fontSize: "0.65rem" }}
                   >
                     - {raviProfile.contact}
-                  </Typography>
+                  </Typography> */}
                 </Box>
               </Grid>
             </Grid>

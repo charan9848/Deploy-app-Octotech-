@@ -17,6 +17,7 @@ import Viewtemplates from './Viewtemplates';
 import AdminDashboard from './AdminDashboard';
 import Customerapplications from './Customerapplications';
 import PrivateRoute from './PrivateRoute';
+import NotFound from './NotFound';
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<UserAuth setJustSignedUp={setJustSignedUp} />} />
           <Route path="/login" element={<LoginAuth />} />
+          <Route path="*" element={<NotFound />} />
        
           <Route path="/admin" element={<Admin />} />
           
