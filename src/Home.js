@@ -10,7 +10,7 @@ import backgroundVideo from './images/back2.mp4';
 import './Home.css';
 import octotechlogo from './images/octotechlogo-modified.png';
 
-import img1 from './images/img1.JPG';
+import img1 from './images/img3.JPG';
 import img2 from './images/img2.JPG';
 import img3 from './images/img3.JPG';
 import img4 from './images/img4.JPG';
