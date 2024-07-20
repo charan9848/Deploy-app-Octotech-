@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
 import Akash from './images/Akash.jpg'
@@ -9,6 +9,10 @@ import { Typography, Box, Container, Grid } from '@mui/material';
 import backgroundVideo from './images/back2.mp4';
 import './Home.css';
 import octotechlogo from './images/octotechlogo-modified.png';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { MDBInput, MDBBtn, MDBValidation, MDBValidationItem, MDBTextArea } from 'mdb-react-ui-kit';
+
 
 import img1 from './images/img3.JPG';
 import img2 from './images/img2.JPG';
@@ -88,25 +92,82 @@ const raviProfile = {
   experience: "1 Years Experience",
 };
 
-
 const Home = () => {
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    user_phone: '',
+    user_subject: '',
+    message: ''
+  });
+
+  const form = useRef(null);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9]{10}$/;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const sendEmail = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    if (!form.current.checkValidity()) {
+      form.current.classList.add('was-validated');
+      return;
+    }
+
+    try {
+      const response = await emailjs.sendForm(
+        'service_lfliz7v', // Replace with your EmailJS service ID
+        'template_6qarprf', // Replace with your EmailJS template ID
+        form.current,
+        '0Tf5hyZ2w00RXElJV' // Replace with your EmailJS public key
+      );
+
+      if (response.status === 200) {
+        setSuccessMessage('Message sent successfully!');
+        setErrorMessage('');
+        setFormData({
+          user_name: '',
+          user_email: '',
+          user_phone: '',
+          user_subject: '',
+          message: ''
+        });
+        form.current.classList.remove('was-validated');
+      } else {
+        setErrorMessage('Failed to send the message. Please try again.');
+        setSuccessMessage('');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setErrorMessage('An error occurred while sending the message. Please try again.');
+      setSuccessMessage('');
+    }
+  };
+  
   return (
     <>
       <Carousel>
-    {images.map((image, index) => (
-      <Carousel.Item key={index} interval={1000}>
-        <img
-          className="d-block w-100"
-          src={image.src}
-          alt={image.alt}
-        />
-        <Carousel.Caption>
-          <h3>{image.header}</h3>
-          <p>{image.paragraph}</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    ))}
-  </Carousel>
+        {images.map((image, index) => (
+          <Carousel.Item key={index} interval={1000}>
+            <img
+              className="d-block w-100"
+              src={image.src}
+              alt={image.alt}
+            />
+            <Carousel.Caption>
+              <h3>{image.header}</h3>
+              <p>{image.paragraph}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
+      </Carousel>
 
       <div>
         <Container
@@ -170,15 +231,15 @@ const Home = () => {
                 <Typography variant="h4" gutterBottom textAlign="center">
                   Welcome to <span style={{ color: "#ff4081", fontFamily: " sans-serif" }}>Octotech</span> Video Editing and VFX Agency!
                 </Typography>
-                <Typography 
-  variant="body1" 
-  textAlign="center" 
-  style={{ fontStyle: "italic", fontSize: "10px" }}
->
-  At Octotech, we bring your vision to life with our expertise in video editing and visual effects. 
-  We create high-quality content that captivates and engages, perfect for social media ads, 
-  YouTube videos, Instagram reels, commercial promotions, and more.
-</Typography>
+                <Typography
+                  variant="body1"
+                  textAlign="center"
+                  style={{ fontStyle: "italic", fontSize: "10px" }}
+                >
+                  At Octotech, we bring your vision to life with our expertise in video editing and visual effects.
+                  We create high-quality content that captivates and engages, perfect for social media ads,
+                  YouTube videos, Instagram reels, commercial promotions, and more.
+                </Typography>
 
               </Box>
             </Grid>
@@ -376,7 +437,7 @@ const Home = () => {
       <br />
 
       <div class="card text-center">
-      <div class="card-header ">
+        <div class="card-header ">
           ABOUT US
         </div>
         <div class="card-body">
@@ -498,6 +559,86 @@ const Home = () => {
       </div>
 
 
+
+
+
+      {/* Contact Us*/}
+      <div className='container mt-5 w-100'>
+      <MDBValidation noValidate ref={form} onSubmit={sendEmail} className='text-center' style={{ width: '100%', maxWidth: '400px' }}>
+        <h2>Contact us</h2>
+        {successMessage && (
+          <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
+        )}
+        {errorMessage && (
+          <div className="alert alert-danger mb-3 pb-lg-2">{errorMessage}</div>
+        )}
+
+        <MDBValidationItem feedback='Please provide your name.' invalid style={{ fontSize: '0.75rem' }}>
+          <MDBInput
+            label='Name'
+            name='user_name'
+            wrapperClass='mb-4'
+            required
+            value={formData.user_name}
+            onChange={handleChange}
+          />
+        </MDBValidationItem>
+
+        <MDBValidationItem feedback='Please provide a valid email.' invalid style={{ fontSize: '0.75rem' }}>
+          <MDBInput
+            type='email'
+            label='Email address'
+            name='user_email'
+            wrapperClass='mb-4'
+            required
+            pattern={emailRegex.source}
+            value={formData.user_email}
+            onChange={handleChange}
+          />
+        </MDBValidationItem>
+
+        <MDBValidationItem feedback='Please provide a valid phone number.' invalid style={{ fontSize: '0.75rem' }}>
+          <MDBInput
+            type='text'
+            label='Phone Number'
+            name='user_phone'
+            wrapperClass='mb-4'
+            required
+            pattern={phoneRegex.source}
+            value={formData.user_phone}
+            onChange={handleChange}
+          />
+        </MDBValidationItem>
+
+        <MDBValidationItem feedback='Please provide a subject.' invalid style={{ fontSize: '0.75rem' }}>
+          <MDBInput
+            label='Subject'
+            name='user_subject'
+            wrapperClass='mb-4'
+            required
+            value={formData.user_subject}
+            onChange={handleChange}
+          />
+        </MDBValidationItem>
+
+        <MDBValidationItem feedback='Please provide a message text.' invalid style={{ fontSize: '0.75rem' }}>
+          <MDBTextArea
+            label='Message'
+            name='message'
+            wrapperClass='mb-4'
+            rows='4'
+            required
+            value={formData.message}
+            onChange={handleChange}
+          />
+        </MDBValidationItem>
+
+        <MDBBtn type='submit' value="Send" color='success' block className='my-4'>
+          Send
+        </MDBBtn>
+      </MDBValidation>
+    </div>
+      {/* Contact Us*/}
 
 
 

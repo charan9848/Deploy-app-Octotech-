@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './UserAuth.css';
 import { auth, db } from './firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { setDoc, doc } from 'firebase/firestore';
 
 import {
@@ -27,7 +27,7 @@ function UserAuth({ setJustSignedUp }) {
 
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  
 
   const { first, last, email, password } = data;
 
