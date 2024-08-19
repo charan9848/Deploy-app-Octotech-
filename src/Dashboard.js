@@ -28,7 +28,7 @@ const Dashboard = () => {
           <div class="card-body">
             <h4 class="card-title">Birthday Invitation Video Templates</h4>
             <p class="card-text">Here are some birthday templates available for you to choose from. Click on the button below to explore and select your preferred template:</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+            <a href="*" class="btn btn-primary">See Profile</a>
           </div>
         </div>
         </div>
@@ -39,7 +39,7 @@ const Dashboard = () => {
           <div class="card-body">
             <h4 class="card-title">Wedding Invitations Video Templates</h4>
             <p class="card-text">Explore our collection of wedding templates designed to capture the love and romance of your special day. Click below to choose your perfect wedding template:</p>
-            <a href="#Mphasis" class="btn btn-primary">See Profile</a>
+            <a href="*" class="btn btn-primary">See Profile</a>
           </div>
         </div>
         </div>
@@ -50,7 +50,7 @@ const Dashboard = () => {
           <div class="card-body">
             <h4 class="card-title">Engagement Invitation Templates</h4>
             <p class="card-text">Capture the excitement and romance of your engagement with our selection of templates. Click below to browse and select your ideal engagement template:</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+            <a href="*" class="btn btn-primary">See Profile</a>
           </div>
         </div>
         </div>
@@ -64,7 +64,7 @@ const Dashboard = () => {
           <div class="col-md-6 p-5 ps-md-5">
             <h5 class="mt-3">Short Film Editing Available</h5>
             <p>Transform your vision into captivating narratives with our professional editing. From narrative shorts to promotional videos, we specialize in creative transitions and impactful visual effects. Contact us today to enhance your storytelling journey.</p>
-            <a href="./login" class="btn btn-success">Go SomeWhere</a>
+            <a href="*" class="btn btn-success">Go SomeWhere</a>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                 <li >Colour Correction</li>
               </ul>
               <br></br>
-              <a href="./login" class="btn btn-primary" >See Profile</a>
+              <a href="./apply" class="btn btn-primary" >See Profile</a>
             </div>
             <h1>699/-</h1>
           </div>
@@ -111,7 +111,7 @@ const Dashboard = () => {
                 <li >Audio Enchancement</li>
                 <li >Sound Effects</li>
               </ul><br></br>
-              <a href="./login" class="btn btn-primary">See Profile</a>
+              <a href="./apply" class="btn btn-primary">See Profile</a>
             </div>
             <h1>999/-</h1>
           </div>
@@ -132,7 +132,7 @@ const Dashboard = () => {
                 <li >Audio Enchancement</li>
                 <li >Sound Effects</li>
               </ul><br></br>
-              <a href="./login" class="btn btn-primary">See Profile</a>
+              <a href="./apply" class="btn btn-primary">See Profile</a>
             </div>
             <h1>1499/-</h1>
           </div>
