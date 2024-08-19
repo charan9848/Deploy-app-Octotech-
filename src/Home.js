@@ -41,22 +41,22 @@ const videoUrls = [
   {
     url: 'https://www.youtube.com/embed/U_aM5C83f3c',
     title: 'Video Editing',
-    description: 'Description of Video 1',
+    description: ' the process of cutting, arranging, and enhancing video footage to create a cohesive and polished final product.',
   },
   {
     url: 'https://www.youtube.com/embed/NikcHaGHOSo',
     title: 'Reels',
-    description: 'Description of Video 2',
+    description: 'Quick cuts or Short edits.',
   },
   {
     url: 'https://www.youtube.com/embed/i3J11Jto_tA',
     title: 'Titles',
-    description: 'Description of Video 3',
+    description: 'After Effects titles templates: Dynamic, animated, customizable titles.'
   },
   {
     url: 'https://www.youtube.com/embed/H8N_A12-F-k',
     title: 'Short Film Trailer',
-    description: 'Description of Video 4',
+    description: 'Edit your short film in Premiere Pro, then enhance with VFX in After Effects, and finally integrate and finalize in Premiere Pro.',
   },
 ];
 
