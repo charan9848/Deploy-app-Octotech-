@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
 import Akash from './images/Akash.jpg'
@@ -12,6 +12,11 @@ import octotechlogo from './images/octotechlogo-modified.png';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { MDBInput, MDBBtn, MDBValidation, MDBValidationItem, MDBTextArea } from 'mdb-react-ui-kit';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 
 
 import img1 from './images/img3.JPG';
@@ -93,6 +98,62 @@ const raviProfile = {
 };
 
 const Home = () => {
+  // youtube api data
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true); // Added loading state
+  const [error, setError] = useState(null); // Added error state
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        setLoading(true); // Start loading
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCbTNjIbYIEkOPTtfX3iwsGtPWsEbsnqKg&channelId=UCbTPb63UXH3V1HVeAKMmwBA&part=snippet,id&order=date&maxResults=10`
+        );
+        const data = await response.json();
+        setVideos(data.items);
+        setLoading(false); // End loading
+      } catch (error) {
+        console.error("Error fetching videos: ", error);
+        setError('Failed to load videos'); // Set error message
+        setLoading(false); // End loading
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      }
+    ]
+  };
+//youtube api data ended
+
+
+
+
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -435,7 +496,82 @@ const Home = () => {
 
       <br />
       <br />
-
+{/* Youtube videos start */}
+      <div class="card text-center">
+        <div class="card-header ">
+          LATEST VIDEOS FROM YOUTUBE 
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><p><em>Subscribe to Octotech creations, make sure hit the bell icon.</em></p></h5>
+          <p class="card-text">https://www.youtube.com/@OCTOTECHCREATIONS</p>
+        </div>
+      </div>
+      <div style={{ padding: '0 20px' }}>
+        <div class='container'>
+        <h2>Latest Updates!</h2>
+        </div>
+        
+      {loading ? (
+        <p>Loading videos...</p>
+      ) : (
+        <Slider {...settings}>
+          {videos.map((video) => (
+            <div
+              key={video.id.videoId}
+              style={{
+                padding: '0 10px',
+                boxSizing: 'border-box'
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: '#f9f9f9',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  margin: '0 auto',
+                  width: '100%',
+                  maxWidth: '400px', // Adjust maxWidth as needed
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div
+                  style={{
+                    textAlign: 'center',
+                    padding: '10px',
+                    margin: 0,
+                    height: '60px', // Fixed height for title container
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#fff',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <h6 style={{ margin: 0, fontSize: '14px', lineHeight: '20px', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                    {video.snippet.title}
+                  </h6>
+                </div>
+                <iframe
+                  width="100%"
+                  height="225"
+                  src={`https://www.youtube.com/embed/${video.id.videoId}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={video.snippet.title}
+                  style={{ display: 'block' }}
+                ></iframe>
+              </div>
+            </div>
+          ))}
+          
+        </Slider>
+      )}
+    </div>
+{/* youtube videos end*/}
+<br />
+      <br />
       <div class="card text-center">
         <div class="card-header ">
           ABOUT US

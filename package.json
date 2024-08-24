@@ -25,8 +25,12 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
+    "react-spinners": "^0.14.1",
+    "react-topbar-progress-indicator": "^4.1.1",
     "react-youtube": "^10.1.0",
     "sitemap-generator": "^8.5.1",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
