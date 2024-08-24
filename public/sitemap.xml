@@ -3,4 +3,23 @@
   <url>
     <loc>https://octotech-a8977.web.app/</loc>
   </url>
+  <url>
+    <loc>https://octotech-a8977.web.app/login</loc>
+  </url>
+  <url>
+    <loc>https://octotech-a8977.web.app/signup</loc>
+  </url>
+  <url>
+    <loc>https://octotech-a8977.web.app/admin</loc>
+  </url>
+  <url>
+    <loc>https://octotech-a8977.web.app/Dashboard</loc>
+  </url>
+   <url>
+    <loc>https://octotech-a8977.web.app/alltemplates</loc>
+  </url>
+ <url>
+    <loc>https://octotech-a8977.web.app/apply</loc>
+  </url>
+  <!-- Add more URLs here -->
 </urlset>
