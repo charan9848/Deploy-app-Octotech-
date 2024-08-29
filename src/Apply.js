@@ -14,6 +14,7 @@ const Apply = () => {
         email: '',
         state: ''
     });
+    const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState("");
 
     const handleChange = (e) => {
@@ -24,8 +25,29 @@ const Apply = () => {
         }));
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = "Name is required.";
+        if (!formData.whatsappNumber) {
+            newErrors.whatsappNumber = "WhatsApp Number is required.";
+        } else if (!/^\d{10}$/.test(formData.whatsappNumber)) {
+            newErrors.whatsappNumber = "WhatsApp Number must be exactly 10 digits.";
+        }
+        if (!formData.category) newErrors.category = "Category is required.";
+        if (!formData.email.trim()) newErrors.email = "Email is required.";
+        if (!formData.state.trim()) newErrors.state = "State is required.";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
+
+        if (!validateForm()) {
+            return;
+        }
+
         try {
             const customersRef = collection(db, 'customers');
             await addDoc(customersRef, formData);
@@ -53,7 +75,7 @@ const Apply = () => {
             {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">Name: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="text"
                         className="form-control"
@@ -63,9 +85,10 @@ const Apply = () => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.name && <div className="text-danger">{errors.name}</div>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="whatsappNumber">WhatsApp Number:</label>
+                    <label htmlFor="whatsappNumber">WhatsApp Number: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="text"
                         className="form-control"
@@ -75,6 +98,7 @@ const Apply = () => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.whatsappNumber && <div className="text-danger">{errors.whatsappNumber}</div>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="templateName">Template Name:</label>
@@ -89,7 +113,7 @@ const Apply = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="category">Category:</label>
+                    <label htmlFor="category">Category: <span style={{ color: 'red' }}>*</span></label>
                     <select
                         className="form-control"
                         id="category"
@@ -104,9 +128,10 @@ const Apply = () => {
                         <option value="Engagement">Engagement Invitation Templates</option>
                         <option value="Other">Other</option>
                     </select>
+                    {errors.category && <div className="text-danger">{errors.category}</div>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email">Email: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="email"
                         className="form-control"
@@ -116,9 +141,10 @@ const Apply = () => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.email && <div className="text-danger">{errors.email}</div>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="state">State:</label>
+                    <label htmlFor="state">State: <span style={{ color: 'red' }}>*</span></label>
                     <input
                         type="text"
                         className="form-control"
@@ -128,8 +154,9 @@ const Apply = () => {
                         onChange={handleChange}
                         required
                     />
+                    {errors.state && <div className="text-danger">{errors.state}</div>}
                 </div>
-                <br></br>
+                <br />
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>

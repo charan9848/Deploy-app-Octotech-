@@ -19,6 +19,7 @@ import Customerapplications from './Customerapplications';
 import PrivateRoute from './PrivateRoute';
 import NotFound from './NotFound';
 import Userdetails from './Userdetails';
+import SliderImages from './SliderImages';
 
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
@@ -79,6 +80,7 @@ const App = () => {
             <Route path="addtemplate" element={<Addtemplate />} />
             <Route path="viewtemplates" element={<Viewtemplates />} />           
             <Route path="userdetails" element={<Userdetails />} />
+            <Route path="sliderimages" element={<SliderImages />} />
           </Route>
           
           <Route

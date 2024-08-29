@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from './firebase';
 
 const Customerapplications = () => {
     const [customers, setCustomers] = useState([]);
+    const [successMessage, setSuccessMessage] = useState(''); // New state for success message
 
     const getData = async () => {
         try {
@@ -24,6 +25,19 @@ const Customerapplications = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            await deleteDoc(doc(db, "customers", id));
+            setCustomers(customers.filter(customer => customer.id !== id)); // Update state after deletion
+            setSuccessMessage('Customer application successfully deleted!'); // Set success message
+            setTimeout(() => {
+                setSuccessMessage(''); // Clear the success message after 3 seconds
+            }, 3000);
+        } catch (error) {
+            console.error('Error deleting document: ', error);
+        }
+    };
+
     useEffect(() => {
         getData();
     }, []);
@@ -37,6 +51,7 @@ const Customerapplications = () => {
     return (
         <div className="container mt-5">
             <h2>Customer Applications</h2>
+            {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -47,6 +62,7 @@ const Customerapplications = () => {
                         <th>Email</th>
                         <th>State</th>
                         <th>Date Added</th> {/* New column for date added */}
+                        <th>Actions</th> {/* New column for actions */}
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +75,14 @@ const Customerapplications = () => {
                             <td>{customer.email}</td>
                             <td>{customer.state}</td>
                             <td>{formatDateTime(customer.createdAt)}</td> {/* Display formatted date */}
+                            <td>
+                                <button 
+                                    className="btn btn-danger btn-sm" 
+                                    onClick={() => handleDelete(customer.id)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

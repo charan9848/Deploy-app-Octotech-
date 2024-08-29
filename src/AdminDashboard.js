@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { auth, db } from './firebase';
 import { signOut } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'; // Added onSnapshot for real-time updates
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [logoutMessage, setLogoutMessage] = useState('');
   const [logoutError, setLogoutError] = useState('');
   const [userCount, setUserCount] = useState(0);
-  const [customerCount, setCustomerCount] = useState(0); // New state for customer count
+  const [customerCount, setCustomerCount] = useState(0);
+  const [newUsers, setNewUsers] = useState(false); // State to track new users
 
   const handleLogout = async () => {
     try {
@@ -24,20 +27,24 @@ const AdminDashboard = () => {
     }
   };
 
-  // Fetch user count from Firestore
+  // Fetch user count and listen for changes in real-time
   useEffect(() => {
-    const fetchUserCount = async () => {
-      try {
-        const usersCollection = collection(db, 'users');
-        const userSnapshot = await getDocs(usersCollection);
-        setUserCount(userSnapshot.size); // Set the user count to the number of documents
-      } catch (error) {
-        console.error('Error fetching user count:', error);
-      }
-    };
+    const usersCollection = collection(db, 'users');
 
-    fetchUserCount();
-  }, []); // Only fetch once when the component mounts
+    // Use onSnapshot to listen for real-time updates
+    const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
+      const currentUserCount = snapshot.size;
+      setUserCount(currentUserCount);
+
+      // Check if new users have been added since the last check
+      if (currentUserCount > userCount) {
+        setNewUsers(true);
+      }
+    });
+
+    // Cleanup the listener on unmount
+    return () => unsubscribe();
+  }, [userCount]);
 
   // Fetch customer count from Firestore
   useEffect(() => {
@@ -70,6 +77,11 @@ const AdminDashboard = () => {
     }
   }, [logoutMessage, logoutError]);
 
+  const handleUserDetailsClick = () => {
+    setNewUsers(false); // Clear the new user badge when user details are viewed
+    navigate('/admindashboard/userdetails');
+  };
+
   return (
     <div>
       <div className="container mt-5">
@@ -97,6 +109,15 @@ const AdminDashboard = () => {
           <button
             type="button"
             className="btn btn-primary"
+            onClick={() => navigate('/admindashboard/sliderimages')}
+          >
+            Sliders
+          </button>
+          <br />
+          <br />
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={() => navigate('/admindashboard/customerapplications')}
           >
             Customers ({customerCount}) {/* Display customer count beside button */}
@@ -106,12 +127,15 @@ const AdminDashboard = () => {
           <button
             type="button"
             className="btn btn-success"
-            onClick={() => navigate('/admindashboard/userdetails')}
+            onClick={handleUserDetailsClick}
           >
-            User Details ({userCount}) {/* Display user count beside button */}
+            <Badge color="secondary" variant="dot" invisible={!newUsers}>
+              User Details ({userCount})
+            </Badge> {/* Display user count with a badge for new users */}
           </button>
           <br />
           <br />
+          
           <button
             type="button"
             className="btn btn-danger"
