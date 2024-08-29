@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
 import Akash from './images/Akash.jpg'
@@ -147,7 +147,7 @@ const Home = () => {
       }
     ]
   };
-//youtube api data ended
+  //youtube api data ended
 
 
 
@@ -209,7 +209,7 @@ const Home = () => {
       setSuccessMessage('');
     }
   };
-  
+
   return (
     <>
       <Carousel>
@@ -494,81 +494,81 @@ const Home = () => {
 
       <br />
       <br />
-{/* Youtube videos start */}
+      {/* Youtube videos start */}
       <div class="card text-center">
         <div class="card-header ">
-          LATEST VIDEOS FROM YOUTUBE 
+          LATEST VIDEOS FROM YOUTUBE
         </div>
         <div class="card-body">
           <h5 class="card-title"><p><em>Subscribe to Octotech creations, make sure hit the bell icon.</em></p></h5>
           <p class="card-text">https://www.youtube.com/@OCTOTECHCREATIONS</p>
         </div>
       </div>
-      <div style={{ padding: '0 20px' }}>
+      <div class='container' style={{ padding: '0 20px' }}>
         <div class='container'>
-        <h2>Latest Updates!</h2>
+          <h2>Latest Updates!</h2>
         </div>
-        
-      {loading ? (
-        <p>Loading videos...</p>
-      ) : (
-        <Slider {...settings}>
-          {videos.map((video) => (
-            <div
-              key={video.id.videoId}
-              style={{
-                padding: '0 10px',
-                boxSizing: 'border-box'
-              }}
-            >
+
+        {loading ? (
+          <p>Loading videos...</p>
+        ) : (
+          <Slider {...settings}>
+            {videos.map((video) => (
               <div
+                key={video.id.videoId}
                 style={{
-                  backgroundColor: '#f9f9f9',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  margin: '0 auto',
-                  width: '100%',
-                  maxWidth: '400px', // Adjust maxWidth as needed
-                  display: 'flex',
-                  flexDirection: 'column'
+                  padding: '0 10px',
+                  boxSizing: 'border-box'
                 }}
               >
                 <div
                   style={{
-                    textAlign: 'center',
-                    padding: '10px',
-                    margin: 0,
-                    height: '60px', // Fixed height for title container
+                    backgroundColor: '#f9f9f9',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    margin: '0 auto',
+                    width: '100%',
+                    maxWidth: '400px', // Adjust maxWidth as needed
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#fff',
-                    overflow: 'hidden'
+                    flexDirection: 'column'
                   }}
                 >
-                  <h6 style={{ margin: 0, fontSize: '14px', lineHeight: '20px', textOverflow: 'ellipsis', overflow: 'hidden' }}>
-                    {video.snippet.title}
-                  </h6>
+                  <div
+                    style={{
+                      textAlign: 'center',
+                      padding: '10px',
+                      margin: 0,
+                      height: '60px', // Fixed height for title container
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#fff',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <h6 style={{ margin: 0, fontSize: '14px', lineHeight: '20px', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                      {video.snippet.title}
+                    </h6>
+                  </div>
+                  <iframe
+                    width="100%"
+                    height="225"
+                    src={`https://www.youtube.com/embed/${video.id.videoId}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={video.snippet.title}
+                    style={{ display: 'block' }}
+                  ></iframe>
                 </div>
-                <iframe
-                  width="100%"
-                  height="225"
-                  src={`https://www.youtube.com/embed/${video.id.videoId}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={video.snippet.title}
-                  style={{ display: 'block' }}
-                ></iframe>
               </div>
-            </div>
-          ))}
-          
-        </Slider>
-      )}
-    </div>
-{/* youtube videos end*/}
-<br />
+            ))}
+
+          </Slider>
+        )}
+      </div>
+      {/* youtube videos end*/}
+      <br />
       <br />
       <div class="card text-center">
         <div class="card-header ">
@@ -698,80 +698,80 @@ const Home = () => {
 
       {/* Contact Us*/}
       <div className='container mt-5 w-100'>
-      <MDBValidation noValidate ref={form} onSubmit={sendEmail} className='text-center' style={{ width: '100%', maxWidth: '400px' }}>
-        <h2>Contact us</h2>
-        {successMessage && (
-          <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
-        )}
-        {errorMessage && (
-          <div className="alert alert-danger mb-3 pb-lg-2">{errorMessage}</div>
-        )}
+        <MDBValidation noValidate ref={form} onSubmit={sendEmail} className='text-center' style={{ width: '100%', maxWidth: '400px' }}>
+          <h2>Contact us</h2>
+          {successMessage && (
+            <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
+          )}
+          {errorMessage && (
+            <div className="alert alert-danger mb-3 pb-lg-2">{errorMessage}</div>
+          )}
 
-        <MDBValidationItem feedback='Please provide your name.' invalid style={{ fontSize: '0.75rem' }}>
-          <MDBInput
-            label='Name'
-            name='user_name'
-            wrapperClass='mb-4'
-            required
-            value={formData.user_name}
-            onChange={handleChange}
-          />
-        </MDBValidationItem>
+          <MDBValidationItem feedback='Please provide your name.' invalid style={{ fontSize: '0.75rem' }}>
+            <MDBInput
+              label='Name'
+              name='user_name'
+              wrapperClass='mb-4'
+              required
+              value={formData.user_name}
+              onChange={handleChange}
+            />
+          </MDBValidationItem>
 
-        <MDBValidationItem feedback='Please provide a valid email.' invalid style={{ fontSize: '0.75rem' }}>
-          <MDBInput
-            type='email'
-            label='Email address'
-            name='user_email'
-            wrapperClass='mb-4'
-            required
-            pattern={emailRegex.source}
-            value={formData.user_email}
-            onChange={handleChange}
-          />
-        </MDBValidationItem>
+          <MDBValidationItem feedback='Please provide a valid email.' invalid style={{ fontSize: '0.75rem' }}>
+            <MDBInput
+              type='email'
+              label='Email address'
+              name='user_email'
+              wrapperClass='mb-4'
+              required
+              pattern={emailRegex.source}
+              value={formData.user_email}
+              onChange={handleChange}
+            />
+          </MDBValidationItem>
 
-        <MDBValidationItem feedback='Please provide a valid phone number.' invalid style={{ fontSize: '0.75rem' }}>
-          <MDBInput
-            type='text'
-            label='Phone Number'
-            name='user_phone'
-            wrapperClass='mb-4'
-            required
-            pattern={phoneRegex.source}
-            value={formData.user_phone}
-            onChange={handleChange}
-          />
-        </MDBValidationItem>
+          <MDBValidationItem feedback='Please provide a valid phone number.' invalid style={{ fontSize: '0.75rem' }}>
+            <MDBInput
+              type='text'
+              label='Phone Number'
+              name='user_phone'
+              wrapperClass='mb-4'
+              required
+              pattern={phoneRegex.source}
+              value={formData.user_phone}
+              onChange={handleChange}
+            />
+          </MDBValidationItem>
 
-        <MDBValidationItem feedback='Please provide a subject.' invalid style={{ fontSize: '0.75rem' }}>
-          <MDBInput
-            label='Subject'
-            name='user_subject'
-            wrapperClass='mb-4'
-            required
-            value={formData.user_subject}
-            onChange={handleChange}
-          />
-        </MDBValidationItem>
+          <MDBValidationItem feedback='Please provide a subject.' invalid style={{ fontSize: '0.75rem' }}>
+            <MDBInput
+              label='Subject'
+              name='user_subject'
+              wrapperClass='mb-4'
+              required
+              value={formData.user_subject}
+              onChange={handleChange}
+            />
+          </MDBValidationItem>
 
-        <MDBValidationItem feedback='Please provide a message text.' invalid style={{ fontSize: '0.75rem' }}>
-          <MDBTextArea
-            label='Message'
-            name='message'
-            wrapperClass='mb-4'
-            rows='4'
-            required
-            value={formData.message}
-            onChange={handleChange}
-          />
-        </MDBValidationItem>
+          <MDBValidationItem feedback='Please provide a message text.' invalid style={{ fontSize: '0.75rem' }}>
+            <MDBTextArea
+              label='Message'
+              name='message'
+              wrapperClass='mb-4'
+              rows='4'
+              required
+              value={formData.message}
+              onChange={handleChange}
+            />
+          </MDBValidationItem>
 
-        <MDBBtn type='submit' value="Send" color='success' block className='my-4'>
-          Send
-        </MDBBtn>
-      </MDBValidation>
-    </div>
+          <MDBBtn type='submit' value="Send" color='success' block className='my-4'>
+            Send
+          </MDBBtn>
+        </MDBValidation>
+      </div>
       {/* Contact Us*/}
 
 

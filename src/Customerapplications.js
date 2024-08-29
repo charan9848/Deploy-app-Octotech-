@@ -9,7 +9,15 @@ const Customerapplications = () => {
         try {
             const customersRef = collection(db, "customers");
             const snapshot = await getDocs(customersRef);
-            const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const data = snapshot.docs.map(doc => {
+                const docData = doc.data();
+                console.log(docData); // Debugging: Log document data to console
+                return {
+                    id: doc.id,
+                    ...docData,
+                    createdAt: docData.createdAt ? docData.createdAt.toDate() : null // Convert Firestore Timestamp to JS Date
+                };
+            });
             setCustomers(data);
         } catch (error) {
             console.error('Error fetching data: ', error);
@@ -20,8 +28,14 @@ const Customerapplications = () => {
         getData();
     }, []);
 
+    // Helper function to format date and time
+    const formatDateTime = (date) => {
+        if (!date) return 'N/A';
+        return date.toLocaleString(); // Formats date to local string representation
+    };
+
     return (
-        <div className="container mt-5" >
+        <div className="container mt-5">
             <h2>Customer Applications</h2>
             <table className="table table-striped">
                 <thead>
@@ -32,6 +46,7 @@ const Customerapplications = () => {
                         <th>Category</th>
                         <th>Email</th>
                         <th>State</th>
+                        <th>Date Added</th> {/* New column for date added */}
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +58,7 @@ const Customerapplications = () => {
                             <td>{customer.category}</td>
                             <td>{customer.email}</td>
                             <td>{customer.state}</td>
+                            <td>{formatDateTime(customer.createdAt)}</td> {/* Display formatted date */}
                         </tr>
                     ))}
                 </tbody>

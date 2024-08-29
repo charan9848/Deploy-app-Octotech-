@@ -18,7 +18,7 @@ import AdminDashboard from './AdminDashboard';
 import Customerapplications from './Customerapplications';
 import PrivateRoute from './PrivateRoute';
 import NotFound from './NotFound';
-
+import Userdetails from './Userdetails';
 
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
@@ -77,7 +77,8 @@ const App = () => {
           >
             <Route path="customerapplications" element={<Customerapplications />} />
             <Route path="addtemplate" element={<Addtemplate />} />
-            <Route path="viewtemplates" element={<Viewtemplates />} />
+            <Route path="viewtemplates" element={<Viewtemplates />} />           
+            <Route path="userdetails" element={<Userdetails />} />
           </Route>
           
           <Route

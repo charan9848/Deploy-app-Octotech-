@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
-import { auth } from './firebase'; // Import auth from firebase.js
+import { auth, db } from './firebase';
 import { signOut } from 'firebase/auth';
+import { collection, getDocs } from 'firebase/firestore';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [logoutMessage, setLogoutMessage] = useState('');
   const [logoutError, setLogoutError] = useState('');
+  const [userCount, setUserCount] = useState(0);
+  const [customerCount, setCustomerCount] = useState(0); // New state for customer count
 
   const handleLogout = async () => {
     try {
@@ -20,6 +23,36 @@ const AdminDashboard = () => {
       setLogoutError('Failed to logout. Please try again.');
     }
   };
+
+  // Fetch user count from Firestore
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const usersCollection = collection(db, 'users');
+        const userSnapshot = await getDocs(usersCollection);
+        setUserCount(userSnapshot.size); // Set the user count to the number of documents
+      } catch (error) {
+        console.error('Error fetching user count:', error);
+      }
+    };
+
+    fetchUserCount();
+  }, []); // Only fetch once when the component mounts
+
+  // Fetch customer count from Firestore
+  useEffect(() => {
+    const fetchCustomerCount = async () => {
+      try {
+        const customersCollection = collection(db, 'customers');
+        const customerSnapshot = await getDocs(customersCollection);
+        setCustomerCount(customerSnapshot.size); // Set the customer count to the number of documents
+      } catch (error) {
+        console.error('Error fetching customer count:', error);
+      }
+    };
+
+    fetchCustomerCount();
+  }, []); // Only fetch once when the component mounts
 
   // Clear the messages after a set time
   useEffect(() => {
@@ -66,7 +99,16 @@ const AdminDashboard = () => {
             className="btn btn-primary"
             onClick={() => navigate('/admindashboard/customerapplications')}
           >
-            Customers
+            Customers ({customerCount}) {/* Display customer count beside button */}
+          </button>
+          <br />
+          <br />
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => navigate('/admindashboard/userdetails')}
+          >
+            User Details ({userCount}) {/* Display user count beside button */}
           </button>
           <br />
           <br />
