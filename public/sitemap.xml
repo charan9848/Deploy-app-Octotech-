@@ -1,25 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://octotech-a8977.web.app/</loc>
+    <loc>https://octotech-a8977.web.app</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <url>
     <loc>https://octotech-a8977.web.app/login</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <url>
     <loc>https://octotech-a8977.web.app/signup</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <url>
     <loc>https://octotech-a8977.web.app/admin</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <url>
     <loc>https://octotech-a8977.web.app/Dashboard</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
    <url>
     <loc>https://octotech-a8977.web.app/alltemplates</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
  <url>
     <loc>https://octotech-a8977.web.app/apply</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <!-- Add more URLs here -->
 </urlset>

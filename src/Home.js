@@ -79,9 +79,7 @@ const profiles = [
   {
     name: "Raghu",
     img: Raghu,
-    description: `An experienced graphic designer with a passion for creating
-      visually stunning designs. My expertise lies in using Adobe Photoshop
-      and Illustrator to bring ideas to life.`,
+    description: `This is Raghu, I'm a VFX artist with 4 years of experience, has worked on numerous Tollywood films, using this  expertise to create stunning visual effects that bring cinematic dreams to life. I use nuke and after effects for composting`,
     // contact: "+91 88865 29625",
     experience: "4 Years Experience",
   },
