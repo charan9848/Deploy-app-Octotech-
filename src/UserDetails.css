@@ -1,0 +1,12 @@
+/* UserDetails.css */
+.new-user {
+    background-color: yellow;
+    animation: blink 1s ease-in-out 3;
+  }
+  
+  @keyframes blink {
+    0% { background-color: yellow; }
+    50% { background-color: lightgreen; }
+    100% { background-color: yellow; }
+  }
+  

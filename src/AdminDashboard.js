@@ -129,7 +129,7 @@ const AdminDashboard = () => {
             className="btn btn-success"
             onClick={handleUserDetailsClick}
           >
-            <Badge color="secondary" variant="dot" invisible={!newUsers}>
+            <Badge color="secondary" >
               User Details ({userCount})
             </Badge> {/* Display user count with a badge for new users */}
           </button>

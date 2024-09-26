@@ -98,6 +98,7 @@ const Addtemplate = () => {
                         <option value="Birthday">Birthday Templates</option>
                         <option value="Wedding">Wedding Invitation Templates</option>
                         <option value="Engagement">Engagement Invitation Templates</option>
+                        <option value="Blender 3d">Blender 3d Templates</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
+import emailjs from '@emailjs/browser';
 
 const Apply = () => {
     const location = useLocation();
     const { selectedTemplate } = location.state || {};
+
     const [formData, setFormData] = useState({
         name: '',
         whatsappNumber: '',
@@ -14,6 +16,7 @@ const Apply = () => {
         email: '',
         state: ''
     });
+    
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -42,15 +45,30 @@ const Apply = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
 
         if (!validateForm()) {
             return;
         }
 
         try {
+            // Save to Firestore
             const customersRef = collection(db, 'customers');
             await addDoc(customersRef, formData);
+
+            // Send email
+            const templateParams = {
+                from_name: formData.name,
+                // to_name: 'Recipient Name', // Replace with recipient's name
+                reply_to: formData.email,
+                whatsapp_number: formData.whatsappNumber,
+                template_name: formData.templateName,
+                category: formData.category,
+                state: formData.state,
+            };
+
+            await emailjs.send('service_lfliz7v', 'template_74pwcp3', templateParams, '0Tf5hyZ2w00RXElJV');
+
             setSuccessMessage("Application Submitted Successfully");
             setFormData({
                 name: '',
@@ -64,7 +82,7 @@ const Apply = () => {
                 setSuccessMessage("");
             }, 3000); // Clear success message after 3 seconds
         } catch (error) {
-            console.error('Error adding document: ', error);
+            console.error('Error: ', error);
             alert(`Failed to submit application: ${error.message}`);
         }
     };
@@ -72,7 +90,7 @@ const Apply = () => {
     return (
         <div className="container mt-5" style={{ width: '350px' }}>
             <h2>Apply for Template</h2>
-            {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
+            {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name: <span style={{ color: 'red' }}>*</span></label>
@@ -109,7 +127,6 @@ const Apply = () => {
                         name="templateName"
                         value={formData.templateName}
                         onChange={handleChange}
-                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -126,6 +143,7 @@ const Apply = () => {
                         <option value="Birthday">Birthday Templates</option>
                         <option value="Wedding">Wedding Invitation Templates</option>
                         <option value="Engagement">Engagement Invitation Templates</option>
+                        <option value="Blender">Blender Templates</option>
                         <option value="Other">Other</option>
                     </select>
                     {errors.category && <div className="text-danger">{errors.category}</div>}

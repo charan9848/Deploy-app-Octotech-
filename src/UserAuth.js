@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+// src/UserAuth.js
+import React, { useState, useEffect } from 'react';
 import './UserAuth.css';
-import { auth, db } from './firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser, clearError, clearSuccessMessage } from './redux/authSlice';
 import { Link } from 'react-router-dom';
-import { setDoc, doc } from 'firebase/firestore';
-
 import {
   MDBBtn,
   MDBContainer,
@@ -25,75 +24,49 @@ function UserAuth({ setJustSignedUp }) {
     password: ""
   });
 
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const [error, setError] = useState(null);
-  
-
   const { first, last, email, password } = data;
+
+  const dispatch = useDispatch();
+  const { error, loading, successMessage } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (successMessage) {
+      setJustSignedUp(true); // Set the parent state to indicate a successful signup
+    }
+  }, [successMessage, setJustSignedUp]);
 
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value });
-  }
+  };
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     return re.test(String(email).toLowerCase());
-  }
+  };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!first.trim() || !last.trim()) {
-      setError('First name and last name are required.');
-      setShowSuccessAlert(false);
+      dispatch(clearError());
+      dispatch({ type: 'auth/signupUser/rejected', payload: 'First name and last name are required.' });
       return;
     }
 
     if (!validateEmail(email)) {
-      setError('Invalid email is entered, Only Gmail addresses are allowed.');
-      setShowSuccessAlert(false);
+      dispatch(clearError());
+      dispatch({ type: 'auth/signupUser/rejected', payload: 'Invalid email. Only Gmail addresses are allowed.' });
       return;
     }
 
     if (password.length <= 5) {
-      setError('Password must be more than 5 characters.');
-      setShowSuccessAlert(false);
+      dispatch(clearError());
+      dispatch({ type: 'auth/signupUser/rejected', payload: 'Password must be more than 5 characters.' });
       return;
     }
 
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      const user = auth.currentUser;
-      console.log(user);
-      if (user) {
-        await setDoc(doc(db, "users", user.uid), {
-          email: user.email,
-          firstname: first,
-          lastname: last
-        });
-      }
-      console.log("Account created, Now you can login your account 😀");
-      setShowSuccessAlert(true);
-      setError(null);
-      setData({
-        first: "",
-        last: "",
-        email: "",
-        password: ""
-      });
-      // Set justSignedUp to true and navigate to login page
-      setJustSignedUp(true);
-    
-
-    } catch (err) {
-      console.log(err);
-      if (err.code === 'auth/email-already-in-use') {
-        setError('Email already in use. Please use a different email.');
-      } else {
-        setError("An error occurred. Please try again.");
-      }
-      setShowSuccessAlert(false);
-    }
-  }
+    dispatch(signupUser({ first, last, email, password }));
+  };
 
   return (
     <div>
@@ -114,9 +87,9 @@ function UserAuth({ setJustSignedUp }) {
               <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
               <MDBCard className='my-5 bg-glass'>
                 <MDBCardBody className='p-5'>
-                  {showSuccessAlert && (
+                  {successMessage && (
                     <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-                      Account Created Successfully!, Now you can login your account 😀
+                      {successMessage}
                     </Alert>
                   )}
                   {error && (
@@ -131,10 +104,11 @@ function UserAuth({ setJustSignedUp }) {
                       <MDBInput wrapperClass='mb-4' label='Last name' id='form2' name='last' value={last} type='text' onChange={changeHandler} />
                     </MDBCol>
                   </MDBRow>
-                  
                   <MDBInput wrapperClass='mb-4' label='Email' id='form3' name='email' value={email} type='email' onChange={changeHandler} />
                   <MDBInput wrapperClass='mb-4' label='Password' id='form4' name='password' value={password} type='password' onChange={changeHandler} />
-                  <MDBBtn className='w-100 mb-4' size='md' type='submit'>Sign Up</MDBBtn>
+                  <MDBBtn className='w-100 mb-4' size='md' type='submit' disabled={loading}>
+                    {loading ? 'Signing Up...' : 'Sign Up'}
+                  </MDBBtn>
                   <br />
                   <center>
                     <Link to="/login">
