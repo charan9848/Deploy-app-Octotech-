@@ -42,7 +42,7 @@ function Navbar() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, fontFamily: 'Orbitron, sans-serif', color: '#f50057' }}
+            sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, fontFamily: 'Oswald', color: 'white', fontWeight: 'bold' }}
           >
             OCTOTECH
           </Typography>
@@ -52,7 +52,7 @@ function Navbar() {
               to="/"
               exact
               className={location.pathname === "/" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }}
+              sx={{ color: 'white' }}
             >
               Home
             </Button>
@@ -61,7 +61,7 @@ function Navbar() {
               component={NavLink}
               to="/admin"
               className={location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }}
+              sx={{ color: 'white' }}
             >
               Admin
             </Button>
@@ -69,7 +69,7 @@ function Navbar() {
               component={NavLink}
               to="/login"
               className={location.pathname === "/login" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }}
+              sx={{ color: 'white' }}
             >
               Login
             </Button>
@@ -77,7 +77,7 @@ function Navbar() {
               component={NavLink}
               to="/signup"
               className={location.pathname === "/signup" ? "nav-link active" : "nav-link"}
-              sx={{ color: '#f50057' }}
+              sx={{ color: 'white' }}
             >
               SignUp free
             </Button>
@@ -149,7 +149,7 @@ function Navbar() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily: 'Orbitron, sans-serif', color: '#f50057' }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily: 'Oswald, sans-serif', color: 'white', fontWeight: 'bold' }}
           >
             OCTOTECH
           </Typography>

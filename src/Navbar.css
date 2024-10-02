@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
 .nav-link.active {
   font-weight: bold;
   text-decoration: none;
   position: relative;
-  color: #ffffffef; /* Changed color to match OCTOTECH color */
+  color: #f50057; /* Changed color to match OCTOTECH color */
   
 }
 
