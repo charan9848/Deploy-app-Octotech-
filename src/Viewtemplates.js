@@ -84,8 +84,8 @@ const Viewtemplates = () => {
             const videoId = extractDriveVideoId(url);
             return (
                 <iframe
-                    width="200"
-                    height="100"
+                    width="100%"
+                    height="200"
                     src={`https://drive.google.com/file/d/${videoId}/preview`}
                     title="Google Drive video player"
                     frameBorder="0"
@@ -106,99 +106,62 @@ const Viewtemplates = () => {
     return (
         <div>
             <div className="container mt-5">
-
-                <h2>All Templates</h2>
-                <p>Only Admin can update here:</p>
-                <button type="button" className="btn btn-warning" onClick={() => window.location.href = '/addtemplate'}>
-            Add Template
-          </button>
-                {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>}
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Template Name</th>
-                            <th>Template Description</th>
-                            <th>Template Video</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {templates.map((template) => (
-                            <tr key={template.id}>
-                                <td>{template.id}</td>
-                                <td>{editId === template.id ? (
-                                    <input
-                                        type="text"
-                                        value={editName}
-                                        onChange={(e) => setEditName(e.target.value)}
-                                    />
-                                ) : (
-                                    template.TemplateName
-                                )}</td>
-                                <td>{editId === template.id ? (
-                                    <textarea
-                                        value={editDescription}
-                                        onChange={(e) => setEditDescription(e.target.value)}
-                                    />
-                                ) : (
-                                    template.TemplateDescription
-                                )}</td>
-                                <td>
-                                    {editId === template.id ? (
+                <h2 className="text-center">All Templates</h2>
+                <p className="text-center">Only Admin can update here:</p>
+                <button type="button" className="btn btn-warning mb-3" onClick={() => window.location.href = '/addtemplate'}>
+                    Add Template
+                </button>
+                {successMessage && <div className="alert alert-success mb-3 pb-lg-2 text-center">{successMessage}</div>}
+                <div className="row justify-content-center">
+                    {templates.map((template) => (
+                        <div className="col-md-4 mb-4" key={template.id}>
+                            <div className="card text-center">
+                                <div className="card-body">
+                                    {renderVideo(editId === template.id ? editUrl : template.TemplateVideoUrl)}
+                                    <h5 className="card-title">{editId === template.id ? (
                                         <input
                                             type="text"
-                                            value={editUrl}
-                                            onChange={(e) => setEditUrl(e.target.value)}
+                                            value={editName}
+                                            onChange={(e) => setEditName(e.target.value)}
                                         />
                                     ) : (
-                                        renderVideo(template.TemplateVideoUrl)
-                                    )}
-                                </td>
-                                <td>{editId === template.id ? (
-                                    <input
-                                        type="text"
-                                        value={editPrice}
-                                        onChange={(e) => setEditPrice(e.target.value)}
-                                    />
-                                ) : (
-                                    `₹${template.TemplatePrice}`
-                                )}</td>
-                                <td>{editId === template.id ? (
-                                    <select
-                                        className="form-control"
-                                        value={editCategory}
-                                        onChange={(e) => setEditCategory(e.target.value)}
-                                    >
-                                        <option value="">Select Category</option>
-                                        <option value="Birthday">Birthday Templates</option>
-                                        <option value="Wedding">Wedding Invitation Templates</option>
-                                        <option value="Engagement">Engagement Invitation Templates</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                ) : (
-                                    template.TemplateCategory
-                                )}</td>
-                                <td>
-                                    {editId === template.id ? (
-                                        <>
-                                            <Button variant="success" onClick={() => UpdateTemplate(template.id)}>Save</Button>{' '}
-                                            <Button variant="secondary" onClick={() => cancelEdit()}>Cancel</Button>
-                                        </>
+                                        template.TemplateName
+                                    )}</h5>
+                                    <p className="card-text">{editId === template.id ? (
+                                        <textarea
+                                            value={editDescription}
+                                            onChange={(e) => setEditDescription(e.target.value)}
+                                        />
                                     ) : (
-                                        <Button variant="primary" onClick={() => handleEdit(template)}>Edit</Button>
-                                    )}
-                                    {' '}
-                                    <Button variant="danger" onClick={() => DeleteTemplate(template.id)}>Delete</Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                                        template.TemplateDescription
+                                    )}</p>
+                                    <p className="card-text"><strong>Price:</strong> {editId === template.id ? (
+                                        <input
+                                            type="text"
+                                            value={editPrice}
+                                            onChange={(e) => setEditPrice(e.target.value)}
+                                        />
+                                    ) : (
+                                        `₹${template.TemplatePrice}`
+                                    )}</p>
+                                    <div className="d-flex justify-content-between">
+                                        {editId === template.id ? (
+                                            <> 
+                                                <Button variant="success" onClick={() => UpdateTemplate(template.id)}>Save</Button>{' '}
+                                                <Button variant="success" onClick={() => cancelEdit()}>Close</Button>
+                                            </>
+                                        ) : (
+                                            <Button variant="success" onClick={() => handleEdit(template)}>Edit</Button>
+                                        )}
+                                        {' '}
+                                        <Button variant="danger" onClick={() => DeleteTemplate(template.id)}>Delete</Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-            
         </div>
     );
 };

@@ -90,9 +90,14 @@ function DashboardNavbar({ presentUser }) {
             >
               Apply
             </Button>
-
-
-
+            <Button
+              component={NavLink}
+              to="/admin"
+              className={location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+              sx={{ color: '#f50057' }}
+            >
+              Admin
+            </Button>
             <Button
               component={NavLink}
               to="/"
@@ -216,6 +221,15 @@ function DashboardNavbar({ presentUser }) {
                 sx={{ color: '#f50057' }}
               >
                 All Templates
+              </MenuItem>
+              <MenuItem
+                component={NavLink}
+                to="/admin"
+                onClick={closeMenu}
+                className={location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+                sx={{ color: '#f50057' }}
+              >
+                Admin
               </MenuItem>
               <MenuItem
                 component={NavLink}

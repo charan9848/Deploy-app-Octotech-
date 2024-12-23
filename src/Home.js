@@ -15,7 +15,7 @@ import { MDBInput, MDBBtn, MDBValidation, MDBValidationItem, MDBTextArea } from 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import img1 from './images/img3.JPG';
+import img1 from './images/img1.JPG';
 import img2 from './images/img2.JPG';
 import img3 from './images/img3.JPG';
 import img4 from './images/img4.JPG';
@@ -204,22 +204,8 @@ const Home = () => {
 
   return (
     <>
-      <Carousel>
-        {images.map((image, index) => (
-          <Carousel.Item key={index} interval={1000}>
-            <img
-              className="d-block w-100"
-              src={image.src}
-              alt={image.alt}
-            />
-            <Carousel.Caption>
-              <h3>{image.header}</h3>
-              <p>{image.paragraph}</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-
+   
+   
       <div>
         <Container
           sx={{
@@ -289,7 +275,7 @@ const Home = () => {
                 >
                   At Octotech, we bring your vision to life with our expertise in video editing and visual effects.
                   We create high-quality content that captivates and engages, perfect for social media ads,
-                  YouTube videos, Instagram reels, commercial promotions, and more.
+                  YouTube videos, Instagram reels, commercial business promotions, and more.
                 </Typography>
 
               </Box>
@@ -360,9 +346,9 @@ const Home = () => {
         </Container>
       </div>
 
-      <div className="container-fluid p-5 bg-primary text-white text-center">
-        <h1 id="Mphasis">Welcome To Octotech</h1>
-        <p>Here Some Templates are Available.</p>
+      <div className="container mx-auto p-5 bg-blue-600 text-black text-center">
+        <h1 id="Mphasis" className="text-4xl font-bold">Templates Available</h1>
+        <p className="text-lg">Here Some Templates are Available.</p>
       </div>
 
       <div className="container mt-5" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '30px' }}>
@@ -676,80 +662,93 @@ const Home = () => {
       </div>
 
       {/* Contact Us*/}
-      <div className='container mt-5 w-100'>
-        <MDBValidation noValidate ref={form} onSubmit={sendEmail} className='text-center' style={{ width: '100%', maxWidth: '400px' }}>
-          <h2>Contact us</h2>
-          {successMessage && (
-            <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
-          )}
-          {errorMessage && (
-            <div className="alert alert-danger mb-3 pb-lg-2">{errorMessage}</div>
-          )}
+      <div className='flex container mt-5 w-full'>
+        <div className='w-full max-w-sm'>
+          <MDBValidation noValidate ref={form} onSubmit={sendEmail} className='text-center'>
+            <h2 className='text-2xl font-bold mb-4'>Contact Us</h2>
+            {successMessage && (
+              <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
+            )}
+            {errorMessage && (
+              <div className="alert alert-danger mb-3 pb-lg-2">{errorMessage}</div>
+            )}
 
-          <MDBValidationItem feedback='Please provide your name.' invalid style={{ fontSize: '0.75rem' }}>
-            <MDBInput
-              label='Name'
-              name='user_name'
-              wrapperClass='mb-4'
-              required
-              value={formData.user_name}
-              onChange={handleChange}
-            />
-          </MDBValidationItem>
+            <MDBValidationItem feedback='Please provide your name.' invalid style={{ fontSize: '0.75rem' }}>
+              <MDBInput
+                label='Name'
+                name='user_name'
+                wrapperClass='mb-4'
+                required
+                value={formData.user_name}
+                onChange={handleChange}
+                className='border rounded-md p-2'
+              />
+            </MDBValidationItem>
 
-          <MDBValidationItem feedback='Please provide a valid email.' invalid style={{ fontSize: '0.75rem' }}>
-            <MDBInput
-              type='email'
-              label='Email address'
-              name='user_email'
-              wrapperClass='mb-4'
-              required
-              pattern={emailRegex.source}
-              value={formData.user_email}
-              onChange={handleChange}
-            />
-          </MDBValidationItem>
+            <MDBValidationItem feedback='Please provide a valid email.' invalid style={{ fontSize: '0.75rem' }}>
+              <MDBInput
+                type='email'
+                label='Email address'
+                name='user_email'
+                wrapperClass='mb-4'
+                required
+                pattern={emailRegex.source}
+                value={formData.user_email}
+                onChange={handleChange}
+                className='border rounded-md p-2'
+              />
+            </MDBValidationItem>
 
-          <MDBValidationItem feedback='Please provide a valid phone number.' invalid style={{ fontSize: '0.75rem' }}>
-            <MDBInput
-              type='text'
-              label='Phone Number'
-              name='user_phone'
-              wrapperClass='mb-4'
-              required
-              pattern={phoneRegex.source}
-              value={formData.user_phone}
-              onChange={handleChange}
-            />
-          </MDBValidationItem>
+            <MDBValidationItem feedback='Please provide a valid phone number.' invalid style={{ fontSize: '0.75rem' }}>
+              <MDBInput
+                type='text'
+                label='Phone Number'
+                name='user_phone'
+                wrapperClass='mb-4'
+                required
+                pattern={phoneRegex.source}
+                value={formData.user_phone}
+                onChange={handleChange}
+                className='border rounded-md p-2'
+              />
+            </MDBValidationItem>
 
-          <MDBValidationItem feedback='Please provide a subject.' invalid style={{ fontSize: '0.75rem' }}>
-            <MDBInput
-              label='Subject'
-              name='user_subject'
-              wrapperClass='mb-4'
-              required
-              value={formData.user_subject}
-              onChange={handleChange}
-            />
-          </MDBValidationItem>
+            <MDBValidationItem feedback='Please provide a subject.' invalid style={{ fontSize: '0.75rem' }}>
+              <MDBInput
+                label='Subject'
+                name='user_subject'
+                wrapperClass='mb-4'
+                required
+                value={formData.user_subject}
+                onChange={handleChange}
+                className='border rounded-md p-2'
+              />
+            </MDBValidationItem>
 
-          <MDBValidationItem feedback='Please provide a message text.' invalid style={{ fontSize: '0.75rem' }}>
-            <MDBTextArea
-              label='Message'
-              name='message'
-              wrapperClass='mb-4'
-              rows='4'
-              required
-              value={formData.message}
-              onChange={handleChange}
-            />
-          </MDBValidationItem>
+            <MDBValidationItem feedback='Please provide a message text.' invalid style={{ fontSize: '0.75rem' }}>
+              <MDBTextArea
+                label='Message'
+                name='message'
+                wrapperClass='mb-4'
+                rows='4'
+                required
+                value={formData.message}
+                onChange={handleChange}
+                className='border rounded-md p-2'
+              />
+            </MDBValidationItem>
 
-          <MDBBtn type='submit' value="Send" color='success' block className='my-4'>
-            Send
-          </MDBBtn>
-        </MDBValidation>
+            <MDBBtn type='submit' value="Send" color='success' block className='my-4'>
+              Send
+            </MDBBtn>
+          </MDBValidation>
+        </div>
+        <div className='w-full max-w-md ml-8'>
+          <h3 className='text-xl font-semibold mb-2'>Get in Touch</h3>
+          <p className='mb-4'>We would love to hear from you! Please fill out the form or reach us at:</p>
+          <p className='mb-2'><strong>Email:</strong> octotechcreations@gmail.com</p>
+          <p className='mb-2'>Our team is available Monday to Friday, 9 AM to 5 PM.</p>
+        </div>
       </div>
       {/* Contact Us*/}
 
@@ -764,17 +763,23 @@ const Home = () => {
           </div>
 
           <ul className="nav col-md-4 justify-content-end list-unstyled d-flex" style={{ gap: '20px' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-youtube" viewBox="0 0 16 16">
-              <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
-            </svg>
+            <a href="https://youtube.com/@octotechcreations?si=BngQEJFHngx3vtcx" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-youtube" viewBox="0 0 16 16">
+                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+              </svg>
+            </a>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
-              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
-            </svg>
+            <a href="https://www.instagram.com/octotech_creations?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+              </svg>
+            </a>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
-              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
-            </svg>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+              </svg>
+            </a>
           </ul>
         </footer>
       </div>

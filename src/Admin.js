@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from './firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import backgroundImage from '../src/images/cool.jpg'; // Update with the correct path
 import './Admin.css';
 
 const Admin = () => {
@@ -41,8 +42,8 @@ const Admin = () => {
   };
 
   return (
-    <div className="admin-login">
-      <div className="admin-login-card">
+    <div className="admin-login" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.9)' }}>
+      <div className="admin-login-card" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)' }}>
         <div className="admin-login-header">
           <h1 className="admin-login-title">Admin Portal</h1>
           <p className="admin-login-subtitle">Sign in to access your dashboard</p>

@@ -83,7 +83,7 @@ const AllTemplates = () => {
     }
 
     return (
-        <div className="templates-container">
+        <div className="templates-container" style={{ backgroundColor: '#333', color: '#ffffff' }}>
             <div className="templates-header">
                 <h1 className="templates-title">Video Templates</h1>
                 <p className="templates-subtitle">

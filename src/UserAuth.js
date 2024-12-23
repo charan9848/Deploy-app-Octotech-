@@ -83,7 +83,7 @@ function UserAuth({ setJustSignedUp }) {
                 Create stunning visual content with our expert team.
               </p>
             </MDBCol>
-            <MDBCol md='6' className='position-relative'>
+            <MDBCol md='6' className='position-relative mt-5'>
               <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
               <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
               <MDBCard className='my-5 bg-glass'>
