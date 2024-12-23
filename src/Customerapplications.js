@@ -50,43 +50,45 @@ const Customerapplications = () => {
 
     return (
         <div className="container mt-5">
-            <h2>Customer Applications</h2>
-            {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>WhatsApp Number</th>
-                        <th>Template Name</th>
-                        <th>Category</th>
-                        <th>Email</th>
-                        <th>State</th>
-                        <th>Date Added</th> {/* New column for date added */}
-                        <th>Actions</th> {/* New column for actions */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {customers.map((customer) => (
-                        <tr key={customer.id}>
-                            <td>{customer.name}</td>
-                            <td>{customer.whatsappNumber}</td>
-                            <td>{customer.templateName}</td>
-                            <td>{customer.category}</td>
-                            <td>{customer.email}</td>
-                            <td>{customer.state}</td>
-                            <td>{formatDateTime(customer.createdAt)}</td> {/* Display formatted date */}
-                            <td>
-                                <button 
-                                    className="btn btn-danger btn-sm" 
-                                    onClick={() => handleDelete(customer.id)}
-                                >
-                                    Delete
-                                </button>
-                            </td>
+            <h2 className="text-center">Customer Applications</h2>
+            {successMessage && <div className="alert alert-success mb-3 text-center">{successMessage}</div>}
+            <div className="table-responsive">
+                <table className="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>WhatsApp Number</th>
+                            <th>Template Name</th>
+                            <th>Category</th>
+                            <th>Email</th>
+                            <th>State</th>
+                            <th>Date Added</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {customers.map((customer) => (
+                            <tr key={customer.id}>
+                                <td>{customer.name}</td>
+                                <td>{customer.whatsappNumber}</td>
+                                <td>{customer.templateName}</td>
+                                <td>{customer.category}</td>
+                                <td>{customer.email}</td>
+                                <td>{customer.state}</td>
+                                <td>{formatDateTime(customer.createdAt)}</td>
+                                <td>
+                                    <button 
+                                        className="btn btn-danger btn-sm" 
+                                        onClick={() => handleDelete(customer.id)}
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

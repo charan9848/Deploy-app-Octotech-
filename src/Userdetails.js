@@ -53,43 +53,33 @@ const Userdetails = () => {
 
   return (
     <div className="container mt-5">
-      <h2>User Details</h2>
+      <h2 className="text-center">User Details</h2>
       {successMessage && (
-        <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>
+        <div className="alert alert-success mb-3 text-center">{successMessage}</div>
       )}
-      {loading && <p>Loading...</p>}
-      {error && <p>Error fetching users: {error.message}</p>}
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Date Created</th> {/* New column header for Date Created */}
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={user.id}>
-              <td>{index + 1}</td>
-              <td>{user.firstname || 'N/A'}</td>
-              <td>{user.lastname || 'N/A'}</td>
-              <td>{user.email}</td>
-              <td>{formatTimestamp(user.createdAt)}</td> {/* Display formatted date */}
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(user.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {loading && <p className="text-center">Loading...</p>}
+      {error && <p className="text-danger text-center">Error fetching users: {error.message}</p>}
+      <div className="row justify-content-center">
+        {users.map((user, index) => (
+          <div className="col-md-4 mb-4" key={user.id}>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title text-center">{user.firstname} {user.lastname}</h5>
+                <p className="card-text text-center">Email: {user.email}</p>
+                <p className="card-text text-center">Date Created: {formatTimestamp(user.createdAt)}</p>
+                <div className="text-center">
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(user.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
