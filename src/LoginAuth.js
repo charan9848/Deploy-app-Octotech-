@@ -81,19 +81,48 @@ function LoginAuth() {
             <MDBCol col='12'>
               <MDBCard className='bg-light text-dark my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '400px' }}>
                 <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
-                {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>} {/* Display success message */}
-                  <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                  <p className="text-dark-50 mb-5">Please enter your login and password!</p>
-                  {alertMessage && <p className="text-danger mb-3 pb-lg-2">{alertMessage}</p>}
+                {successMessage && (
+                  <div className="alert alert-success" role="alert">
+                    {successMessage}
+                  </div>
+                )}
+                  <h2 className="fw-bold mb-2 text-uppercase">Welcome Back</h2>
+                  <p className="text-dark-50 mb-4">Please enter your credentials to continue</p>
+                  {alertMessage && (
+                    <div className="alert alert-danger" role="alert">
+                      {alertMessage}
+                    </div>
+                  )}
                   
-                  <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-dark' label='Email address' name='email' value={email} type='email' size="lg" onChange={changeHandler} />
-                  <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-dark' label='Password' name='password' value={password} type='password' size="lg" onChange={changeHandler} />
-                  <MDBBtn outline className='mx-2 px-5' color='black' size='lg' type='Submit'>
-                    Login
+                  <MDBInput 
+                    wrapperClass='mb-4 w-100' 
+                    labelClass='text-dark' 
+                    label='Email address' 
+                    name='email' 
+                    value={email} 
+                    type='email' 
+                    size="lg" 
+                    onChange={changeHandler}
+                    required 
+                  />
+                  <MDBInput 
+                    wrapperClass='mb-4 w-100' 
+                    labelClass='text-dark' 
+                    label='Password' 
+                    name='password' 
+                    value={password} 
+                    type='password' 
+                    size="lg" 
+                    onChange={changeHandler}
+                    required 
+                  />
+                  <MDBBtn className='w-100 mb-4' size='lg' type='submit'>
+                    Sign in
                   </MDBBtn>
-                  <br />
-                  <div>
-                    <Link to='/signup'><p className="mb-0">Don't have an account? Sign up here</p></Link>
+                  <div className="text-center">
+                    <Link to='/signup' className="text-decoration-none">
+                      <p className="mb-0">Don't have an account? <span className="fw-bold">Sign up</span></p>
+                    </Link>
                   </div>
                 </MDBCardBody>
               </MDBCard>

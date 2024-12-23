@@ -12,19 +12,23 @@
         hsl(218, 41%, 20%) 75%,
         hsl(218, 41%, 19%) 80%,
         transparent 100%);
-        margin: 0 auto;
-  }
-  
-  #radius-shape-1 {
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#radius-shape-1 {
     height: 220px;
     width: 220px;
     top: -60px;
     left: -130px;
     background: radial-gradient(#44006b, #ad1fff);
     overflow: hidden;
-  }
-  
-  #radius-shape-2 {
+    animation: float 6s ease-in-out infinite;
+}
+
+#radius-shape-2 {
     border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
     bottom: -60px;
     right: -110px;
@@ -32,9 +36,122 @@
     height: 300px;
     background: radial-gradient(#44006b, #ad1fff);
     overflow: hidden;
-  }
-  
-  .bg-glass {
+    animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    }
+    50% {
+        border-radius: 45% 55% 52% 48% / 45% 55% 45% 55%;
+    }
+    100% {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    }
+}
+
+.bg-glass {
     background-color: hsla(0, 0%, 100%, 0.9) !important;
     backdrop-filter: saturate(200%) blur(25px);
-  }
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: transform 0.3s ease-in-out;
+}
+
+.bg-glass:hover {
+    transform: translateY(-5px);
+}
+
+.form-outline input {
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s ease;
+}
+
+.form-outline input:focus {
+    border-color: #ad1fff;
+    box-shadow: 0 0 0 2px rgba(173, 31, 255, 0.2);
+    background-color: white !important;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #44006b, #ad1fff) !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(173, 31, 255, 0.4) !important;
+}
+
+.btn-primary:active {
+    transform: translateY(0) !important;
+}
+
+.display-3 {
+    font-weight: 800 !important;
+    letter-spacing: -1px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.signup-text {
+    animation: fadeInUp 1s ease-out 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .background-radial-gradient {
+        padding: 2rem 1rem;
+    }
+
+    #radius-shape-1, #radius-shape-2 {
+        display: none;
+    }
+}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from './firebase'; // Import auth and db from firebase.js
+import { auth, db } from './firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import './Admin.css';
 
 const Admin = () => {
   const [email, setEmail] = useState('');
@@ -24,9 +25,9 @@ const Admin = () => {
 
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
-      const adminDoc = await getDoc(doc(db, 'admins', uid)); // Using db (Firestore instance)
+      const adminDoc = await getDoc(doc(db, 'admins', uid));
       if (adminDoc.exists()) {
-        setSuccessMessage('Login successful!');
+        setSuccessMessage('Login successful! Redirecting...');
         setTimeout(() => {
           navigate('/admindashboard');
         }, 1000);
@@ -40,40 +41,48 @@ const Admin = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ width: '350px' }}>
-      <h2>Admin Login</h2>
-      <br />
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Enter email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+    <div className="admin-login">
+      <div className="admin-login-card">
+        <div className="admin-login-header">
+          <h1 className="admin-login-title">Admin Portal</h1>
+          <p className="admin-login-subtitle">Sign in to access your dashboard</p>
         </div>
-        <br />
-        <div className="form-group">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            id="pwd"
-            placeholder="Enter password"
-            name="pwd"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <br />
-        {error && <div className="alert alert-danger mb-3">{error}</div>}
-        {successMessage && <div className="alert alert-success mb-3 pb-lg-2">{successMessage}</div>}
-        <button type="submit" className="btn btn-default">Submit</button>
-      </form>
+
+        <form onSubmit={handleSubmit}>
+          {error && <div className="admin-alert admin-alert-danger">{error}</div>}
+          {successMessage && <div className="admin-alert admin-alert-success">{successMessage}</div>}
+          
+          <div className="admin-form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="admin-form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="admin-submit-btn">
+            Sign In
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
