@@ -21,6 +21,7 @@ import NotFound from './NotFound';
 import Userdetails from './Userdetails';
 import SliderImages from './SliderImages';
 
+
 const App = () => {
   const [presentUser, setPresentUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<UserAuth setJustSignedUp={setJustSignedUp} />} />
           <Route path="/login" element={<LoginAuth />} />
+         
           <Route path="*" element={<NotFound />} />
        
           <Route path="/admin" element={<Admin />} />

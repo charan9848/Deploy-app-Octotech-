@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
 import Akash from './images/Akash.jpg'
-import Charan from './images/Charan.jpeg'
+import Charan from './images/Charan.JPG'
 import Raghu from './images/Raghu.jpg'
 import Avatar from '@mui/material/Avatar';
 import { Typography, Box, Container, Grid } from '@mui/material';
@@ -83,9 +83,7 @@ const profiles = [
 const raviProfile = {
   name: "Gannoj Bhanu Charan",
   img: Charan,
-  description: `A dedicated software developer with a focus on front-end development
-    using React.js and Material-UI. I enjoy building responsive and dynamic
-    user interfaces.`,
+  description: `A dedicated 3D artist with a passion for creating detailed and visually captivating models. I specialize in using tools like Blender and After Effects to turn creative ideas into lifelike 3D designs. One of my proudest creations is a temple door model, where I focused on intricate detailing and architectural precision to bring the design to life.`,
   // contact: "+91 9848728321",
   experience: "1 Years Experience",
 };
