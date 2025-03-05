@@ -345,7 +345,7 @@ const Home = () => {
       </div>
 
       <div className="container mx-auto p-5 bg-blue-600 text-black text-center">
-        <h1 id="Mphasis" className="text-4xl font-bold">Templates Available</h1>
+        <p id="Mphasis" className="text-4xl fw-bold fs-5">Templates Available</p>
         <p className="text-lg">Here Some Templates are Available.</p>
       </div>
 
@@ -411,24 +411,23 @@ const Home = () => {
         <div className="price-container">
           <div className="card img-fluid" style={{ width: '350px' }}>
             <div className="card-body">
-              <h1 className="card-title bg-secondary rounded-pill">Basic</h1>
+              <div className="card-title bg-secondary rounded-pill fs-6 fw-bold text-white">Basic</div>
               <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}>
                 <li >Basic Cutting</li>
                 <li >Basic Transitions</li>
                 <li >Audio Adjustment</li>
                 <li >Colour Correction</li>
               </ul>
-              <br></br>
               <a href="./login" className="btn btn-primary" >See Profile</a>
             </div>
-            <h1>699/-</h1>
+            <div className='fw-bold fs-5 mb-3'>699/-</div>
           </div>
         </div>
 
         <div className="price-container">
           <div className="card img-fluid" style={{ width: '350px' }}>
             <div className="card-body">
-              <h1 className="card-title bg-primary rounded-pill">Standard</h1>
+              <div className="card-title bg-primary rounded-pill fs-6 fw-bold text-white">Standard</div>
               <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}>
                 <li >Colour Correction</li>
                 <li >Colour Grading</li>
@@ -437,17 +436,17 @@ const Home = () => {
                 <li >Subtitles</li>
                 <li >Audio Enchancement</li>
                 <li >Sound Effects</li>
-              </ul><br></br>
+              </ul>
               <a href="./login" className="btn btn-primary">See Profile</a>
             </div>
-            <h1>999/-</h1>
+            <div className='fw-bold fs-5 mb-3'>999/-</div>
           </div>
         </div>
 
         <div className="price-container">
           <div className="card img-fluid" style={{ width: '350px' }}>
             <div className="card-body">
-              <h1 className="card-title bg-warning rounded-pill">Premium</h1>
+              <div className="card-title bg-warning rounded-pill fw-bold fs-6">Premium</div>
               <ul style={{ display: 'inline-block', textAlign: 'left', padding: '40px' }}>
                 <li >Visual Effects</li>
                 <li >Text Animation</li>
@@ -461,7 +460,7 @@ const Home = () => {
               </ul><br></br>
               <a href="./login" className="btn btn-primary">See Profile</a>
             </div>
-            <h1>1499/-</h1>
+            <div className='fw-bold fs-6'>1499/-</div>
           </div>
         </div>
       </div>
